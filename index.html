@@ -757,6 +757,17 @@
         .footer-content { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; }
         .divider { display: none; }
         @media (min-width: 600px) { .divider { display: inline; color: #444; } }
+        
+        /* SHATIUM Uio Badge */
+        .footer-badge {
+            display: block;
+            margin-top: 20px;
+            font-size: 0.75rem;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.15em;
+            color: #444;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
@@ -1069,6 +1080,7 @@
             <span class="divider">|</span>
             <span>Envíos a nivel nacional 🇪🇨</span>
         </div>
+        <span class="footer-badge">SHATIUM UIO</span>
     </footer>
 
     <!-- =========================================
@@ -1123,7 +1135,7 @@
             const reviewsData = [
                 // HOMBRES (1 al 17)
                 { name: "José Zambrano", img: "perfil1.jpg", stars: 5, text: "Wao, quedé sorprendido con el producto, la verdad no me esperaba esa fijación en piel 🔥. Recomendadísimo." },
-                { name: "Luis Sánchez", img: "perfil2.jpg", stars: 5, text: "Pedí de envío, me llegó lo más pronto. Lo único que tardó fue el transporte 😅, pero me llegó y estoy por pedir más!!" },
+                { name: "Luis Sánchez", img: "perfil2.jpg", stars: 5, text: "Pedí de envío, me llegó lo más pronto. Lo único que tardó fue el transporte 😅" },
                 { name: "Carlos Rodríguez", img: "perfil3.jpg", stars: 4, text: "El empaque es top, súper elegante. El aroma de Erba Pura está a otro nivel, 100% recomendado loco. 💯" },
                 { name: "Juan García", img: "perfil4.jpg", stars: 5, text: "Pedí el Baccarat con el +20% de esencia y bro... la duración es una locura. Me bañé y sigo oliendo a eso jaja 🤯." },
                 { name: "Jorge Vera", img: "perfil5.jpg", stars: 4, text: "Buenísimos los perfumes. El Phantom me dura fácil unas 8 horas proyectando bien. Solo pongan más promos de envíos! 🚚" },
@@ -1132,27 +1144,27 @@
                 { name: "Manuel Torres", img: "perfil8.jpg", stars: 5, text: "No les tenía tanta fe por el precio pero wow, tremenda cachetada me dieron jaja calidad brutal 🤝🏼." },
                 { name: "Christian González", img: "perfil9.jpg", stars: 5, text: "Están duros esos perfumes, el nicho sí se nota que tiene componentes distintos, huele carísimo 💵." },
                 { name: "Jefferson Castro", img: "perfil10.jpg", stars: 5, text: "Recomendados, seriedad total con los pagos y me enviaron la guía al toque. Ya soy cliente fijo 👍." },
-                { name: "Darwin Mendoza", img: "perfil11.jpg", stars: 5, text: "Espectacular. Probé uno de diseñador primero y luego me pasé a la línea Nicho, y uf, el de Nicho es una experiencia bárbara 🔥." },
+                { name: "Darwin Mendoza", img: "perfil11.jpg", stars: 3, text: "El perfume huele muy rico y dura bastante, pero la empresa de envíos se demoró un día más de lo acordado. Fuera de eso, todo bien ✌️." },
                 { name: "Franklin Morales", img: "perfil12.jpg", stars: 5, text: "Compré el Invictus clásico y me sorprendió, huele igualito al que venden en el mall pero a fracción del precio." },
                 { name: "Marlon Ramírez", img: "perfil13.jpg", stars: 5, text: "Excelente servicio y atención al cliente. Un man me explicó todo sobre el layering, 10/10 la atención." },
                 { name: "Wilson Flores", img: "perfil14.jpg", stars: 4, text: "Me regalaron uno por mi cumple y ya me compré dos más. Súper adictivos, muy buena calidad." },
                 { name: "Edwin Andrade", img: "perfil15.jpg", stars: 5, text: "Llegó súper rápido a mi casa. Las botellas se sienten pesadas, de buena calidad. Recomendado a mil." },
                 { name: "Alex Jaramillo", img: "perfil16.jpg", stars: 5, text: "Buena nota con el descuento. Me pedí el combo VIP y valió cada centavo, huelo rico todo el día. 👌" },
-                { name: "Patricio Saltos", img: "perfil17.jpg", stars: 5, text: "Compré a ciegas y la pegué. Muy buen servicio y los perfumes proyectan bestial." },
+                { name: "Patricio Saltos", img: "perfil17.jpg", stars: 4, text: "El empaque muy cuidado, la botella intacta. Aroma 10/10, nomás toca ver qué tal rinde en la calle." },
 
                 // MUJERES (18 al 30)
                 { name: "María Intriago", img: "perfil18.jpg", stars: 5, text: "Literal, fue el mejor regalo para mi novio ✨. Le encantó el Invictus, huele riquísimo y dura un montón." },
                 { name: "Rosa Loor", img: "perfil19.jpg", stars: 5, text: "Hice combo de crema y perfume de Cloud y no les miento, huelo a postre todo el día 🍰💖 ¡Amo!" },
-                { name: "Ana Guerrero", img: "perfil20.jpg", stars: 5, text: "El servicio de atención es muy bueno, te ayudan a elegir si no sabes nada de notas olfativas 🥰 súper pacientes." },
+                { name: "Ana Guerrero", img: "perfil20.jpg", stars: 4, text: "El servicio de atención es muy bueno, te ayudan a elegir si no sabes nada de notas olfativas 🥰 súper pacientes." },
                 { name: "Carmen Chávez", img: "perfil21.jpg", stars: 5, text: "Compré un combo para mi esposo y para mí, y la verdad es que la calidad se nota. Nada de olor a alcohol barato, son muy buenos. ✨" },
                 { name: "Diana Toala", img: "perfil22.jpg", stars: 5, text: "La presentación es bellísima, las botellas pesadas y el atomizador esparce súper bien. No le piden nada a los originales 💖." },
                 { name: "Martha Moreira", img: "perfil23.jpg", stars: 5, text: "Me dejaron probar el Instant Crush y me enamoré de una. 😍 Acabo de pedir la de 100ml." },
                 { name: "Blanca Barros", img: "perfil24.jpg", stars: 5, text: "Excelente servicio, compré para el cumpleaños de mi hermano y hasta le pusieron un detallito. Lo máximo chicas 🌸." },
                 { name: "Gladys Espinoza", img: "perfil25.jpg", stars: 5, text: "Desde que uso el Toy 2 Bubble Gum me preguntan a cada rato qué perfume es, deja muchísima estela ✨💖." },
-                { name: "Verónica Paredes", img: "perfil26.jpg", stars: 5, text: "Todo impecable, mi pedido llegó empacado con mucho cuidado para que no se rompa, lindo detalle. 🥰" },
+                { name: "Verónica Paredes", img: "perfil26.jpg", stars: 4, text: "Todo impecable, mi pedido llegó empacado con mucho cuidado para que no se rompa, lindo detalle. 🥰" },
                 { name: "Mayra Guamán", img: "perfil27.jpg", stars: 5, text: "Las cremas corporales huelen tan rico que a veces ni me pongo perfume. Mega hidratantes y duraderas." },
                 { name: "Jessica Pilco", img: "perfil28.jpg", stars: 5, text: "Chicas, si quieren oler a millonaria pidan el Baccarat. Es una delicia total, lo juro. 🤩" },
-                { name: "Gabriela Quishpe", img: "perfil29.jpg", stars: 5, text: "Me llegó rapidísimo a Cuenca. El envase es súper chic y elegante, 100% estético." },
+                { name: "Gabriela Quishpe", img: "perfil29.jpg", stars: 4, text: "Me llegó rapidísimo a Cuenca. El envase es súper chic y elegante, me hubiese gustado que la caja sea un pelito más dura, pero todo regio 100% estético." },
                 { name: "Daniela Cagua", img: "perfil30.jpg", stars: 5, text: "Es la tercera vez que pido. Mis favoritos son los nicho, huelen diferente a todo el mundo. ¡Gracias totales!" }
             ];
 
@@ -1167,26 +1179,32 @@
 
             // Inyectar reseñas dinámicas en el HTML
             const reviewsListContainer = document.getElementById('dynamicReviewsList');
-            const shuffledReviews = shuffleArray([...reviewsData]);
-
-            let reviewsHTML = '';
-            shuffledReviews.forEach(review => {
-                const starsHtml = '★'.repeat(review.stars) + '☆'.repeat(5 - review.stars);
+            
+            // Función que renderiza un bloque de reseñas (entre 5 y 8 aleatorias)
+            function renderRandomReviews() {
+                const shuffled = shuffleArray([...reviewsData]);
+                // Elegir un número aleatorio entre 5 y 8
+                const count = Math.floor(Math.random() * (8 - 5 + 1)) + 5;
+                const selectedReviews = shuffled.slice(0, count);
                 
-                // Agregamos un onerror por si la imagen local aún no está disponible, para que no se vea feo
-                reviewsHTML += `
-                    <div class="review-card">
-                        <div class="reviewer-avatar">
-                            <img src="${review.img}" alt="Foto perfil" onerror="this.src='https://via.placeholder.com/45x45/2a2a2c/e2e2e7?text=${review.name.charAt(0)}'">
+                let reviewsHTML = '';
+                selectedReviews.forEach(review => {
+                    const starsHtml = '★'.repeat(review.stars) + '☆'.repeat(5 - review.stars);
+                    
+                    reviewsHTML += `
+                        <div class="review-card">
+                            <div class="reviewer-avatar">
+                                <img src="${review.img}" alt="Foto perfil" onerror="this.src='https://via.placeholder.com/45x45/2a2a2c/e2e2e7?text=${review.name.charAt(0)}'">
+                            </div>
+                            <div class="review-content">
+                                <div class="reviewer-name">${review.name} <span class="stars">${starsHtml}</span></div>
+                                <div class="review-text">${review.text}</div>
+                            </div>
                         </div>
-                        <div class="review-content">
-                            <div class="reviewer-name">${review.name} <span class="stars">${starsHtml}</span></div>
-                            <div class="review-text">${review.text}</div>
-                        </div>
-                    </div>
-                `;
-            });
-            reviewsListContainer.innerHTML = reviewsHTML;
+                    `;
+                });
+                reviewsListContainer.innerHTML = reviewsHTML;
+            }
 
             // =========================================
             // Funcionalidad del Modal de Reseñas
@@ -1197,6 +1215,9 @@
 
             // Abrir Modal
             openBtn.addEventListener('click', () => {
+                // Renderizar reseñas nuevas CADA VEZ que se abre el modal
+                renderRandomReviews();
+                
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Evita scrollear el fondo
             });
