@@ -144,7 +144,7 @@
         }
 
         /* =========================================
-           CONCEPTOS Y TEXTOS
+           CONCEPTOS Y TEXTOS (JUSTIFICADOS)
         ========================================= */
         .concept { background-color: var(--bg-light); color: var(--text-dark); padding-top: 120px; }
         .concept h2, .niche-section h2, .catalog-section h2 { font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 30px; }
@@ -152,8 +152,14 @@
         .niche-section h2 em { font-style: italic; font-weight: 400; }
 
         .concept p, .niche-section p, .catalog-section p {
-            max-width: 850px; font-size: clamp(1.05rem, 2.8vw, 1.25rem); font-weight: 400; line-height: 1.75; margin-bottom: 25px;
+            max-width: 850px; 
+            font-size: clamp(1.05rem, 2.8vw, 1.25rem); 
+            font-weight: 400; 
+            line-height: 1.75; 
+            margin-bottom: 25px;
+            text-align: justify;
         }
+        
         .concept p { color: var(--text-muted-light); }
         .niche-section p, .catalog-section p { color: var(--text-muted-dark); }
         .concept p span { color: var(--text-dark); font-weight: 600; }
@@ -162,6 +168,7 @@
         .highlight-box {
             background-color: rgba(0,0,0,0.03); padding: 28px 32px; border-radius: 14px; margin-top: 20px; max-width: 850px;
             animation: organicFloat 7s ease-in-out infinite; transition: box-shadow 0.4s ease, border-color 0.4s ease;
+            text-align: justify;
         }
         .dark-bg .highlight-box {
             background-color: var(--silver-glow); border: 1px solid var(--silver-border); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
@@ -216,7 +223,9 @@
 
         .info-sticker {
             background-color: rgba(255, 255, 255, 0.8); border-left: 4px solid #d1d1d6; padding: 15px 20px; border-radius: 0 10px 10px 0;
-            max-width: 650px; margin: 0 auto 55px auto; text-align: left; font-size: 0.85rem; line-height: 1.6; color: var(--text-muted-light); font-style: italic; box-shadow: 0 5px 15px rgba(0,0,0,0.03); animation: organicFloatAlt 8s ease-in-out infinite 0.5s;
+            max-width: 650px; margin: 0 auto 55px auto; 
+            text-align: justify;
+            font-size: 0.85rem; line-height: 1.6; color: var(--text-muted-light); font-style: italic; box-shadow: 0 5px 15px rgba(0,0,0,0.03); animation: organicFloatAlt 8s ease-in-out infinite 0.5s;
         }
         .info-sticker.dark-sticker { background-color: rgba(20, 20, 22, 0.9); border-left: 4px solid var(--accent-silver); color: #a1a1a6; box-shadow: 0 5px 20px rgba(0,0,0,0.4); }
         .info-sticker b { font-weight: 600; color: var(--text-dark); }
@@ -228,7 +237,7 @@
         .gallery-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
-            color: var(--text-dark); /* Color oscuro elegante en fondo claro */
+            color: var(--text-dark); 
             margin-bottom: 30px;
             font-weight: 600;
         }
@@ -246,4 +255,575 @@
         .gallery-wrapper:nth-child(3) .product-card { animation: organicFloatAlt 6.5s ease-in-out infinite 0.5s; }
         .gallery-wrapper:nth-child(4) .product-card { animation: organicFloat 7.5s ease-in-out infinite 1.5s; }
         .product-card { background-color: #141416; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 30px 24px; display: flex; flex-direction: column; align-items: center; height: 100%; }
-        .light-bg .product-card { background-color: #fbfbfd; border:
+        .light-bg .product-card { background-color: #fbfbfd; border: 1px solid #e5e5ea; }
+        .product-image { width: 100%; height: 240px; object-fit: contain; margin-bottom: 20px; mix-blend-mode: multiply; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .dark-bg .product-image { mix-blend-mode: normal; border-radius: 10px; }
+        .product-card:hover .product-image { transform: scale(1.08); }
+        
+        .product-title { font-size: 1.2rem; margin-bottom: 10px; font-family: 'Playfair Display', serif; color: var(--accent-silver); }
+        .light-bg .product-title { color: var(--text-dark); }
+        .product-sizes { font-size: 0.8rem; color: var(--text-muted-dark); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+        .light-bg .product-sizes { color: var(--text-muted-light); }
+
+        .disclaimer { font-size: 0.85rem; color: var(--text-muted-dark); max-width: 800px; margin-top: 60px; line-height: 1.6; font-style: italic; }
+        .light-bg .disclaimer { color: var(--text-muted-light); }
+
+        .catalog-section { background-color: #08080a; padding: 120px 20px; border-top: 1px solid #1c1c1e; }
+        .body-care { background-color: var(--bg-light); color: var(--text-dark); padding: 120px 20px; }
+        .body-care h2 { font-size: clamp(2.1rem, 4.8vw, 3.8rem); margin-bottom: 30px; background: linear-gradient(90deg, #1d1d1f, #515154); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* =========================================
+           SLIDER BODY CARE
+        ========================================= */
+        .body-care-slider-wrapper {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto 0;
+            position: relative;
+        }
+
+        .body-care-slide {
+            background-color: #ffffff;
+            border: 1px solid #e5e5ea;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: organicFloat 8s ease-in-out infinite;
+        }
+
+        .body-care-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #d1d1d6;
+        }
+
+        .body-care-slide h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .body-care-slide p {
+            font-size: 1.05rem;
+            color: var(--text-muted-light);
+            line-height: 1.6;
+            text-align: justify;
+            max-width: 700px;
+        }
+
+        .body-care-slide b {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+
+        /* =========================================
+           SECCIÓN DE COMBOS VIP
+        ========================================= */
+        .combos-vip-section {
+            background: linear-gradient(180deg, #0a0a0c 0%, #000000 100%);
+            padding: 120px 20px;
+            border-top: 1px solid #1c1c1e;
+            width: 100%;
+        }
+
+        .combos-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .combo-box {
+            background: linear-gradient(135deg, #141416 0%, #0c0c0e 100%);
+            border: 1px solid rgba(226, 226, 231, 0.15);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            position: relative;
+            animation: organicFloat 10s ease-in-out infinite;
+        }
+        .combo-box:nth-child(2) { animation: organicFloatAlt 11s ease-in-out infinite 1s; }
+        .combo-box:nth-child(3) { border-color: rgba(226, 226, 231, 0.3); }
+
+        .combo-badge {
+            position: absolute;
+            top: -15px; left: 50%; transform: translateX(-50%);
+            background: #fff; color: #000;
+            padding: 6px 22px; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .combo-box:nth-child(3) .combo-badge { background: var(--silver-gradient); }
+
+        .combo-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .combo-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+        /* Imágenes del combo */
+        .combo-visuals {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .combo-img-wrap {
+            position: relative;
+            width: clamp(65px, 12vw, 85px);
+            height: clamp(90px, 18vw, 120px);
+            border-radius: 12px;
+            padding: 5px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .combo-img-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px;}
+        
+        .plus-sign { font-size: 1.8rem; color: var(--text-muted-light); font-weight: 300; }
+
+        /* Calcomanía +20% Esencia */
+        .upgrade-sticker {
+            position: absolute;
+            top: -8px; left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            color: #000000;
+            font-size: 0.55rem;
+            font-weight: 800;
+            padding: 3px 6px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+            z-index: 2;
+            white-space: nowrap;
+        }
+
+        /* Precios e info del combo */
+        .combo-info { text-align: right; flex-grow: 1; display: flex; flex-direction: column; align-items: flex-end;}
+        .combo-price {
+            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        .combo-gift {
+            font-size: 0.8rem;
+            color: var(--accent-silver);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .combo-desc {
+            font-size: 0.75rem;
+            color: #8e8e93;
+            font-style: italic;
+            margin-top: 6px;
+        }
+
+        /* Botón de personalizar */
+        .customize-link {
+            font-size: 0.85rem;
+            color: var(--text-muted-light);
+            text-decoration: underline;
+            margin-top: 6px;
+            transition: color 0.3s ease;
+            font-style: italic;
+        }
+        .customize-link:hover { color: var(--text-light); }
+
+        /* Notas de marketing y disclaimer */
+        .combo-marketing-note {
+            max-width: 800px;
+            margin: 60px auto 0 auto;
+            text-align: justify;
+            color: var(--text-muted-dark);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding: 25px;
+            border: 1px dashed rgba(226, 226, 231, 0.2);
+            border-radius: 15px;
+        }
+
+        /* ========== RECUADRO GIGANTE PARA EL REFILL ========== */
+        .refill-placeholder {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-muted-dark);
+            font-style: italic;
+            font-size: 0.95rem;
+            width: 100%;
+        }
+        .refill-box {
+            width: clamp(200px, 40vw, 350px); 
+            height: clamp(200px, 40vw, 350px);
+            border: 1px solid rgba(226, 226, 231, 0.15);
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #141416 0%, #0c0c0e 100%);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .refill-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(226, 226, 231, 0.4);
+        }
+
+        .refill-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+        footer { background-color: #000; border-top: 1px solid #1c1c1e; color: var(--text-muted-dark); text-align: center; padding: 40px 20px; font-size: 0.9rem; }
+        .footer-content { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .divider { display: none; }
+        @media (min-width: 600px) { .divider { display: inline; color: #444; } }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero reveal">
+        <div class="hero-brand-wrapper">
+            <div class="logo-container">
+                <img src="shatvf.png" alt="Logotipo SHATIUM" onerror="this.style.opacity='0'">
+            </div>
+            <div class="hero-divider"></div>
+            <h1>SHATIUM</h1>
+            <h2>Tu esencia, elevada a la perfección</h2>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 1: ESSENTIALS -->
+    <section class="concept reveal light-bg">
+        <h2>La Línea Essentials</h2>
+        <p>Inspirada en las firmas más exclusivas del mundo. <span>Essentials</span> es tu entrada a la alta perfumería, aromas versátiles y magnéticos para tu día a día. Logramos una fórmula <span>idéntica al original</span>, pero con una duración y proyección que te acompañarán impecablemente hasta la noche.</p>
+        
+        <div class="reveal"><div class="highlight-box"><p style="margin: 0; font-size: 1.1rem;">Lujo inteligente a tu alcance. Haz de estas maravillas tu sello personal pidiendo nuestra <span>línea "Essentials"</span> y descubre la magia de llevar una obra de arte todos los días.</p></div></div>
+
+        <!-- TARJETA DE PRECIOS: ESSENTIALS -->
+        <div class="pricing-wrapper reveal">
+            <div class="pricing-card light">
+                <h3>Essentials</h3>
+                <div class="pricing-grid-internal pricing-header">
+                    <span class="col-size">Tamaño</span><span class="col-base">Clásico</span><span class="col-upgrade">+20% Esencia</span>
+                </div>
+                <div class="pricing-grid-internal"><span class="col-size">30 ml</span><span class="col-base">$13</span><span class="col-upgrade">$15</span></div>
+                <div class="pricing-grid-internal"><span class="col-size">50 ml</span><span class="col-base">$17</span><span class="col-upgrade">$20</span></div>
+                <div class="pricing-grid-internal"><span class="col-size">100 ml</span><span class="col-base">$25</span><span class="col-upgrade">$28</span></div>
+            </div>
+        </div>
+
+        <div class="promo-link-wrapper reveal">
+            <!-- Link redirige a la sección de combos -->
+            <a href="#combos-exclusivos" class="promo-link">Descubrir Promociones Exclusivas ✦</a>
+        </div>
+
+        <!-- STICKER EXPLICATIVO -->
+        <div class="info-sticker light-sticker reveal">
+            <b>El Secreto:</b> La versión clásica es ideal para el día a día, con un equilibrio perfecto entre estela y duración. ¿Quieres dejar huella a donde vayas? Elige la versión <b>+20% Esencia</b>: al tener mayor pureza de aceites, lograrás un aroma profundo y una fijación extrema en tu piel que no pasará desapercibida.
+        </div>
+
+        <h3 class="gallery-title reveal">Ejemplos de perfumes <em>"Essentials"</em></h3>
+
+        <div class="gallery-container">
+            <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje1.jpg" alt="Phantom" class="product-image"><h4 class="product-title">Phantom - Essentials</h4></div></div>
+            <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje2.jpg" alt="Invictus" class="product-image"><h4 class="product-title">Invictus - Essentials</h4></div></div>
+            <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje3.jpg" alt="Cloud" class="product-image"><h4 class="product-title">Cloud - Essentials</h4></div></div>
+            <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje4.jpg" alt="Toy 2 Bubble Gum" class="product-image"><h4 class="product-title">Bubble Gum - Essentials</h4></div></div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: ESSENTIALS + (NICHO) -->
+    <section class="niche-section reveal dark-bg">
+        <h2>Essentials+ <em> "Nicho"</em></h2>
+        <p>¿Qué es un perfume Nicho? Es <span>arte puro embotellado</span>. Creado con ingredientes exóticos y técnicas artesanales, es para quienes no temen destacar. Son obras maestras <span>100% unisex</span> que reaccionan a la química de tu piel, creando un aroma irrepetible. Nadie más olerá como tú.</p>
+        
+        <div class="reveal"><div class="highlight-box"><p style="margin: 0; font-size: 1.1rem; color: var(--text-light);">Atrévete a dar el salto a la verdadera exclusividad. Descubre sus notas secretas, déjate envolver por su complejidad y eleva tu presencia con la sofisticada línea <span>"Essential Plus"</span>.</p></div></div>
+
+        <!-- TARJETA DE PRECIOS: ESSENTIALS PLUS -->
+        <div class="pricing-wrapper reveal">
+            <div class="pricing-card silver-card">
+                <h3>Essential Plus</h3>
+                <div class="pricing-grid-internal pricing-header">
+                    <span class="col-size">Tamaño</span><span class="col-base">Clásico</span><span class="col-upgrade">+20% Esencia</span>
+                </div>
+                <div class="pricing-grid-internal"><span class="col-size">30 ml</span><span class="col-base">$14</span><span class="col-upgrade">$16</span></div>
+                <div class="pricing-grid-internal"><span class="col-size">50 ml</span><span class="col-base">$18</span><span class="col-upgrade">$20</span></div>
+                <div class="pricing-grid-internal"><span class="col-size">100 ml</span><span class="col-base">$27</span><span class="col-upgrade">$30</span></div>
+            </div>
+        </div>
+
+        <div class="promo-link-wrapper reveal">
+            <!-- Link redirige a la sección de combos -->
+            <a href="#combos-exclusivos" class="promo-link">Descubrir Promociones Exclusivas ✦</a>
+        </div>
+
+        <!-- STICKER EXPLICATIVO -->
+        <div class="info-sticker dark-sticker reveal">
+            <b>*El Secreto:</b> La versión clásica es ideal para el día a día, con un equilibrio perfecto entre estela y duración. ¿Quieres dejar huella a donde vayas? Elige la versión <b>+20% Esencia</b>: al tener mayor pureza de aceites, lograrás un aroma profundo y una fijación extrema en tu piel que no pasará desapercibida.
+        </div>
+
+        <h3 class="gallery-title reveal">Ejemplos de perfumes <em>"Essentials+"</em></h3>
+
+        <div class="gallery-container">
+            <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje5.jpg" alt="Instant Crush - Essential+" class="product-image"><h4 class="product-title">Instant Crush - Essential+</h4></div></div>
+            <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje6.jpg" alt="Baccarat Rouge - Essential+" class="product-image"><h4 class="product-title">Baccarat Rouge - Essential+</h4></div></div>
+            <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje7.jpg" alt="Ombre Leather - Essential+" class="product-image"><h4 class="product-title">Ombre Leather - Essential+</h4></div></div>
+            <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje8.jpg" alt="Erba Pura - Essential+" class="product-image"><h4 class="product-title">Erba Pura - Essential+</h4></div></div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: CATÁLOGO DINÁMICO -->
+    <section class="catalog-section reveal">
+        <h2>Un Catálogo en Constante Evolución</h2>
+        <p>El lujo no descansa, nosotros tampoco. Nuestro universo se renueva constantemente con los lanzamientos mundiales más codiciados. Nuestro compromiso es simple: entregarte <span>calidad suprema</span> y la máxima elegancia olfativa en cada gota de tu elección, asegurando que siempre tengas acceso a lo último en tendencias mundiales de perfumería.</p>
+    </section>
+
+    <!-- SECCIÓN 4: SHATIUM BODY CARE -->
+    <section class="body-care reveal light-bg">
+        <div style="max-width: 900px;" class="reveal">
+            <h2>SHATIUM Body Care</h2>
+            <p style="font-size: clamp(1.05rem, 2.5vw, 1.25rem); color: var(--text-muted-light); line-height: 1.75; margin-bottom: 22px; text-align: justify;">Lleva tu aroma favorito más allá del frasco de cristal. Ahora, nuestra selecta colección de fragancias está <strong>disponible para toda nuestra línea de cuidado corporal</strong>, permitiéndote disfrutar de tu esencia preferida en cada paso de tu rutina.</p>
+        </div>
+        
+        <!-- NUEVO SLIDE ESTILO TARJETA PARA BODY CARE -->
+        <div class="body-care-slider-wrapper reveal delay-1">
+            <div class="body-care-slide">
+                <div class="body-care-icon">✨</div>
+                <h3>Cremas y Lociones a tu Medida</h3>
+                <p>¿Tienes una fragancia favorita de nuestro catálogo? <b>Pídenos cualquier producto de nuestra línea Body Care perfumado con el aroma de tu elección.</b> <br><br> Al usar en conjunto tu perfume con nuestra crema hidratante a juego, lograrás un majestuoso efecto de capas que no solo nutre profundamente tu piel, sino que <b>multiplica la intensidad, estela y duración de tu aroma</b>, garantizando una presencia impecable e inconfundible durante todo el día.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         SECCIÓN 5: COMBOS VIP
+         ==================================================================== -->
+    <section id="combos-exclusivos" class="combos-vip-section reveal">
+        <h2 style="font-size: clamp(2.2rem, 5vw, 4rem); background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 50px;">Combos SHATIUM</h2>
+        
+        <div class="combos-grid">
+            
+            <!-- CAJA 1: COMBO ESSENTIALS -->
+            <div class="combo-box reveal delay-1">
+                <div class="combo-badge">Combo Essentials</div>
+                
+                <!-- Opción 1: 2 Clásicos -->
+                <div class="combo-row">
+                    <div class="combo-visuals">
+                        <div class="combo-img-wrap"><img src="sheje2.jpg" alt="Invictus"></div>
+                        <span class="plus-sign">+</span>
+                        <div class="combo-img-wrap"><img src="sheje3.jpg" alt="Cloud"></div>
+                    </div>
+                    <div class="combo-info">
+                        <div class="combo-price">$46</div>
+                        <div class="combo-gift">+ Obsequio: Refill Portátil</div>
+                        <div class="combo-desc">Llévate dos Essential Clásicos</div>
+                        <a href="#personaliza-nota" class="customize-link">Personaliza tu combo</a>
+                    </div>
+                </div>
+
+                <!-- Opción 2: 2 con +20% -->
+                <div class="combo-row">
+                    <div class="combo-visuals">
+                        <div class="combo-img-wrap">
+                            <span class="upgrade-sticker">+20% Esencia</span>
+                            <img src="sheje1.jpg" alt="Phantom">
+                        </div>
+                        <span class="plus-sign">+</span>
+                        <div class="combo-img-wrap">
+                            <span class="upgrade-sticker">+20% Esencia</span>
+                            <img src="sheje4.jpg" alt="Bubble Gum">
+                        </div>
+                    </div>
+                    <div class="combo-info">
+                        <div class="combo-price">$52</div>
+                        <div class="combo-gift">+ Obsequio: Refill Portátil</div>
+                        <div class="combo-desc">Llévate dos +20% Esencia</div>
+                        <a href="#personaliza-nota" class="customize-link">Personaliza tu combo</a>
+                    </div>
+                </div>
+
+                <!-- Opción 3: 1 Clásico + 1 con +20% -->
+                <div class="combo-row">
+                    <div class="combo-visuals">
+                        <div class="combo-img-wrap"><img src="sheje1.jpg" alt="Phantom"></div>
+                        <span class="plus-sign">+</span>
+                        <div class="combo-img-wrap">
+                            <span class="upgrade-sticker">+20% Esencia</span>
+                            <img src="sheje3.jpg" alt="Cloud">
+                        </div>
+                    </div>
+                    <div class="combo-info">
+                        <div class="combo-price">$48</div>
+                        <div class="combo-gift">+ Obsequio: Refill Portátil</div>
+                        <div class="combo-desc">Llévate 1 Clásico y 1 +20% Esencia</div>
+                        <a href="#personaliza-nota" class="customize-link">Personaliza tu combo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAJA 2: COMBO ESSENTIALS + -->
+            <div class="combo-box reveal delay-2">
+                <div class="combo-badge">Combo Essentials+</div>
+                
+                <!-- Opción 1: 2 Clásicos Nicho -->
+                <div class="combo-row">
+                    <div class="combo-visuals">
+                        <div class="combo-img-wrap"><img src="sheje5.jpg" alt="Instant Crush"></div>
+                        <span class="plus-sign">+</span>
+                        <div class="combo-img-wrap"><img src="sheje8.jpg" alt="Erba Pura"></div>
+                    </div>
+                    <div class="combo-info">
+                        <div class="combo-price">$50</div>
+                        <div class="combo-gift">+ Obsequio: Refill Portátil</div>
+                        <div class="combo-desc">Llévate dos Essential+ Clásicos</div>
+                        <a href="#personaliza-nota" class="customize-link">Personaliza tu combo</a>
+                    </div>
+                </div>
+
+                <!-- Opción 2: 2 Nicho con +20% -->
+                <div class="combo-row">
+                    <div class="combo-visuals">
+                        <div class="combo-img-wrap">
+                            <span class="upgrade-sticker">+20% Esencia</span>
+                            <img src="sheje6.jpg" alt="Baccarat">
+                        </div>
+                        <span class="plus-sign">+</span>
+                        <div class="combo-img-wrap">
+                            <span class="upgrade-sticker">+20% Esencia</span>
+                            <img src="sheje7.jpg" alt="Ombre Leather">
+                        </div>
+                    </div>
+                    <div class="combo-info">
+                        <div class="combo-price">$55</div>
+                        <div class="combo-gift">+ Obsequio: Refill Portátil</div>
+                        <div class="combo-desc">Llévate dos Essential+ (+20% Esencia)</div>
+                        <a href="#personaliza-nota" class="customize-link">Personaliza tu combo</a>
+                    </div>
+                </div>
+
+                <!-- Opción 3: 1 Nicho Clásico + 1 Nicho con +20% -->
+                <div class="combo-row">
+                    <div class="combo-visuals">
+                        <div class="combo-img-wrap"><img src="sheje8.jpg" alt="Erba Pura"></div>
+                        <span class="plus-sign">+</span>
+                        <div class="combo-img-wrap">
+                            <span class="upgrade-sticker">+20% Esencia</span>
+                            <img src="sheje7.jpg" alt="Ombre Leather">
+                        </div>
+                    </div>
+                    <div class="combo-info">
+                        <div class="combo-price">$52</div>
+                        <div class="combo-gift">+ Obsequio: Refill Portátil</div>
+                        <div class="combo-desc">Llévate 1 Essential+ Clásico y 1 +20% Esencia</div>
+                        <a href="#personaliza-nota" class="customize-link">Personaliza tu combo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAJA 3: SHATIUM SILLAGE -->
+            <div class="combo-box reveal delay-3">
+                <div class="combo-badge">SHATIUM Sillage</div>
+                
+                <!-- Opción 1 (Mix Clásico: 1 Ess + 1 Ess+) -->
+                <div class="combo-row">
+                    <div class="combo-visuals">
+                        <div class="combo-img-wrap"><img src="sheje1.jpg" alt="Phantom"></div>
+                        <span class="plus-sign">+</span>
+                        <div class="combo-img-wrap"><img src="sheje5.jpg" alt="Instant Crush"></div>
+                    </div>
+                    <div class="combo-info">
+                        <div class="combo-price">$47</div>
+                        <div class="combo-gift">+ Obsequio: Refill Portátil</div>
+                        <div class="combo-desc">Llévate 1 Essential y 1 Essential+ Clásicos</div>
+                        <a href="#personaliza-nota" class="customize-link">Personaliza tu combo</a>
+                    </div>
+                </div>
+
+                <!-- Opción 2 (Mix +20%: 1 Ess + 1 Ess+) -->
+                <div class="combo-row">
+                    <div class="combo-visuals">
+                        <div class="combo-img-wrap">
+                            <span class="upgrade-sticker">+20% Esencia</span>
+                            <img src="sheje4.jpg" alt="Bubble Gum">
+                        </div>
+                        <span class="plus-sign">+</span>
+                        <div class="combo-img-wrap">
+                            <span class="upgrade-sticker">+20% Esencia</span>
+                            <img src="sheje8.jpg" alt="Erba Pura">
+                        </div>
+                    </div>
+                    <div class="combo-info">
+                        <div class="combo-price">$55</div>
+                        <div class="combo-gift">+ Obsequio: Refill Portátil</div>
+                        <div class="combo-desc">Llévate 1 Essential y 1 Essential+ (+20% Esencia)</div>
+                        <a href="#personaliza-nota" class="customize-link">Personaliza tu combo</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- NOTAS DE MARKETING Y PERSONALIZACIÓN -->
+        <div id="personaliza-nota" class="combo-marketing-note reveal delay-2">
+            <strong>Tú dictas las reglas.</strong><br><br>
+            Los combos anteriores son <em>pura inspiración</em> diseñada para guiar tu instinto, pero el creador de tu firma olfativa eres tú. Eres completamente libre de elegir cualquier fragancia de nuestro extenso catálogo y armar el set perfecto que defina tu estilo personal.
+        </div>
+
+        <!-- RECUADRO GIGANTE DE REFILL -->
+        <div class="refill-placeholder reveal delay-3">
+            <div class="refill-box">
+                <!-- 🔴 AQUÍ COLOCAS TU IMAGEN DEL REFILL -->
+                <img src="shatrefil.jpg" alt="Refill Portátil" class="refill-img" onerror="this.src='https://via.placeholder.com/400x400/1c1c1e/86868b?text=IMAGEN+DEL+REFILL'">
+            </div>
+            * Imagen referencial del obsequio "Refill".
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <span>© 2026 SHATIUM. Todos los derechos reservados.</span>
+            <span class="divider">|</span>
+            <span>Envíos a nivel nacional 🇪🇨</span>
+        </div>
+    </footer>
+
+    <!-- SCRIPT ANIMACIONES -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOnScroll = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } });
+            }, { threshold: 0.05, rootMargin: "0px 0px -40px 0px" });
+            reveals.forEach(reveal => { revealOnScroll.observe(reveal); });
+            setTimeout(() => { const hero = document.querySelector('.hero'); if(hero) hero.classList.add('active'); }, 100);
+        });
+    </script>
+</body>
+</html>
