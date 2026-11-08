@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SHATIUM | Essentials, Originals & Decants</title>
+    
+    <!-- =========================================
+         FUENTES ELEGANTES (Google Fonts)
+    ========================================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           VARIABLES Y ESTILOS BASE
+        ========================================= */
+        :root {
+            --bg-dark: #000000;
+            --bg-light: #f5f5f7;
+            --text-light: #f5f5f7;
+            --text-dark: #1d1d1f;
+            --text-muted-dark: #86868b;
+            --text-muted-light: #6e6e73;
+            
+            --accent-silver: #e2e2e7; 
+            --silver-gradient: linear-gradient(135deg, #ffffff 0%, #c7c7cc 45%, #8e8e93 85%, #e5e5ea 100%);
+            --silver-border: rgba(226, 226, 231, 0.22);
+            --silver-glow: rgba(226, 226, 231, 0.05);
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; margin: 0; font-weight: 600; letter-spacing: 0.02em; }
+        p { margin: 0; letter-spacing: 0.01em; }
+
+        /* =========================================
+           SISTEMA DE PESTAÑAS (TABS)
+        ========================================= */
+        .tab-pane { display: none; animation: fadeInTab 0.6s ease forwards; }
+        .tab-pane.active { display: block; }
+        @keyframes fadeInTab { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* =========================================
+           ANIMACIONES PREMIUM
+        ========================================= */
+        .reveal { opacity: 0; transform: translateY(45px); transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.15s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.45s; }
+
+        @keyframes organicFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        @keyframes organicFloatAlt { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+        @keyframes logoPulse { 0%, 100% { filter: drop-shadow(0 4px 15px rgba(255, 255, 255, 0.05)); } 50% { filter: drop-shadow(0 4px 25px rgba(255, 255, 255, 0.15)); } }
+
+        /* =========================================
+           SECCIONES GENERALES
+        ========================================= */
+        section { padding: 110px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
+        @media (max-width: 768px) { section { padding: 80px 20px; } }
+
+        /* =========================================
+           HERO SECTION Y NAVEGACIÓN
+        ========================================= */
+        .hero { min-height: 100vh; justify-content: center; align-items: center; background-color: var(--bg-dark); position: relative; padding: 40px 20px; }
+        .hero-brand-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2; }
+        .logo-container { width: clamp(100px, 16vw, 150px); height: clamp(100px, 16vw, 150px); margin-bottom: 28px; display: flex; align-items: center; justify-content: center; }
+        .logo-container img { width: 100%; height: 100%; object-fit: contain; display: block; animation: logoPulse 4s infinite ease-in-out; }
+        .hero-divider { width: 45px; height: 1px; background: var(--silver-gradient); margin-bottom: 28px; opacity: 0.6; }
+        .hero h1 { font-size: clamp(3rem, 8vw, 6.8rem); margin-bottom: 14px; letter-spacing: 0.08em; background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero h2 { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: clamp(1.1rem, 3.5vw, 2.2rem); color: var(--text-muted-dark); letter-spacing: 0.06em; text-transform: uppercase; }
+
+        /* NAVEGACIÓN PÍLDORA (Alta Legibilidad) */
+        .hero-menu-pill { display: flex; align-items: center; margin-top: 50px; background: linear-gradient(135deg, #ffffff 0%, #d1d1d6 50%, #e2e2e7 100%); border-radius: 40px; padding: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.8); transform: scale(0.95); }
+        .menu-btn { text-decoration: none; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 35px; transition: all 0.3s ease; }
+        .menu-btn.active { background: #050505; box-shadow: inset 0 0 15px rgba(255,255,255,0.05), 0 5px 15px rgba(0,0,0,0.6); border: 1px solid rgba(226,226,231,0.1); }
+        .menu-btn.active span { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem; color: #ffffff; text-shadow: 0 0 12px rgba(255, 255, 255, 0.2); letter-spacing: 0.05em; font-weight: 700; }
+        .menu-divider-group { display: flex; align-items: center; }
+        .menu-btn.normal { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 800; letter-spacing: 0.1em; color: #000000; text-transform: uppercase; padding: 12px 20px; }
+        .menu-btn.normal:hover { background: rgba(0,0,0,0.08); }
+        .menu-vert-line { width: 1px; height: 18px; background: rgba(0,0,0,0.3); }
+
+        /* BOTÓN BLACK DAYS EN EL HERO */
+        .hero-black-days {
+            margin-top: 40px;
+            background: var(--silver-gradient); color: #000; padding: 12px 35px;
+            border-radius: 30px; font-weight: 800; font-size: 0.95rem; letter-spacing: 2px;
+            text-transform: uppercase; cursor: pointer; border: none;
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2); transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse-widget 2.5s infinite;
+        }
+        .hero-black-days:hover { transform: scale(1.05); box-shadow: 0 10px 35px rgba(255, 255, 255, 0.4); }
+
+        @media (max-width: 600px) {
+            .hero-menu-pill { flex-direction: column; background: transparent; box-shadow: none; gap: 10px; margin-top: 40px;}
+            .menu-divider-group { background: linear-gradient(135deg, #ffffff 0%, #d1d1d6 50%, #e2e2e7 100%); border-radius: 40px; padding: 2px;}
+            .menu-btn.active { width: 100%; border-radius: 40px; padding: 15px 40px;}
+            .hero-black-days { margin-top: 25px; width: 100%; }
+        }
+
+        /* =========================================
+           CONCEPTOS Y TEXTOS
+        ========================================= */
+        .concept { background-color: var(--bg-light); color: var(--text-dark); padding-top: 120px; }
+        .concept h2, .niche-section h2, .catalog-section h2, .dark-section h2 { font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 30px; }
+        .niche-section h2, .catalog-section h2, .dark-section h2 { background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .niche-section h2 em, .concept h2 em { font-style: italic; font-weight: 400; }
+        .concept p, .niche-section p, .catalog-section p, .dark-section p { max-width: 850px; font-size: clamp(1.05rem, 2.8vw, 1.25rem); font-weight: 400; line-height: 1.75; margin-bottom: 25px; text-align: justify; }
+        
+        .concept p { color: var(--text-muted-light); }
+        .niche-section p, .catalog-section p, .dark-section p { color: var(--text-muted-dark); }
+        .concept p span { color: var(--text-dark); font-weight: 600; }
+        .niche-section p span, .catalog-section p span, .dark-section p span { color: var(--accent-silver); font-weight: 600; }
+
+        .highlight-box { background-color: rgba(0,0,0,0.03); padding: 28px 32px; border-radius: 14px; margin-top: 20px; max-width: 850px; animation: organicFloat 7s ease-in-out infinite; transition: box-shadow 0.4s ease, border-color 0.4s ease; text-align: justify; }
+        .dark-bg .highlight-box { background-color: var(--silver-glow); border: 1px solid var(--silver-border); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
+
+        /* =========================================
+           VITRINA / GALERÍA DE PRODUCTOS
+        ========================================= */
+        .gallery-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--text-dark); margin-bottom: 30px; margin-top: 60px; font-weight: 600; }
+        .dark-bg .gallery-title { background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+        .gallery-container { width: 100%; max-width: 1200px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 10px; margin-bottom: 40px; }
+        .gallery-wrapper:nth-child(1) .product-card { animation: organicFloat 6s ease-in-out infinite 0s; }
+        .gallery-wrapper:nth-child(2) .product-card { animation: organicFloat 7s ease-in-out infinite 1s; }
+        .gallery-wrapper:nth-child(3) .product-card { animation: organicFloatAlt 6.5s ease-in-out infinite 0.5s; }
+        .gallery-wrapper:nth-child(4) .product-card { animation: organicFloat 7.5s ease-in-out infinite 1.5s; }
+        .product-card { background-color: #141416; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 30px 24px; display: flex; flex-direction: column; align-items: center; height: 100%; }
+        .light-bg .product-card { background-color: #fbfbfd; border: 1px solid #e5e5ea; }
+        .product-image { width: 100%; height: 240px; object-fit: contain; margin-bottom: 20px; mix-blend-mode: multiply; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .dark-bg .product-image { mix-blend-mode: normal; border-radius: 10px; }
+        .product-card:hover .product-image { transform: scale(1.08); }
+        .product-title { font-size: 1.2rem; margin-bottom: 10px; font-family: 'Playfair Display', serif; color: var(--accent-silver); }
+        .light-bg .product-title { color: var(--text-dark); }
+
+        /* =========================================
+           PRECIOS Y BOTONES DE PROMO
+        ========================================= */
+        .pricing-wrapper { max-width: 850px; width: 100%; margin: 20px auto 30px auto; }
+        .pricing-card { background: linear-gradient(180deg, #141416 0%, #0c0c0e 100%); padding: 40px 35px; border-radius: 24px; text-align: left; border: 1px solid var(--silver-border); box-shadow: 0 20px 40px rgba(0,0,0,0.5); animation: organicFloat 9s ease-in-out infinite; }
+        .pricing-card.light { background: #ffffff; border: 1px solid #e5e5ea; box-shadow: 0 15px 35px rgba(0,0,0,0.06); }
+        .pricing-card h3 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 25px; text-align: center; }
+        .pricing-card.silver-card h3 { background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .pricing-card.light h3 { color: #000000; } 
+        
+        .pricing-grid-internal { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 15px; align-items: center; border-bottom: 1px solid rgba(226, 226, 231, 0.15); padding: 18px 0; font-family: 'Montserrat', sans-serif; font-size: 1.15rem; }
+        .pricing-card.light .pricing-grid-internal { border-bottom: 1px solid #e5e5ea; }
+        .pricing-grid-internal:last-child { border-bottom: none; padding-bottom: 0; }
+        .pricing-header { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted-dark); font-weight: 600; padding-bottom: 10px; border-bottom: 1px solid rgba(226, 226, 231, 0.3); margin-bottom: 5px; }
+        .pricing-card.light .pricing-header { color: var(--text-muted-light); border-bottom: 1px solid #d1d1d6; }
+        
+        .col-size { font-weight: 600; color: var(--text-muted-light); }
+        .col-base { font-weight: 600; color: #fff; text-align: center; }
+        .col-upgrade { font-weight: 700; text-align: right; color: var(--accent-silver); }
+        
+        .pricing-card.light .col-size { color: var(--text-muted-light); }
+        .pricing-card.light .col-base { color: var(--text-dark); }
+        .pricing-card.light .col-upgrade { color: #8e8e93; }
+
+        @media (max-width: 600px) {
+            .pricing-card { padding: 30px 15px; }
+            .pricing-grid-internal { font-size: 1rem; gap: 8px; padding: 12px 0; }
+            .col-upgrade { font-size: 0.95rem; }
+        }
+
+        .promo-link-wrapper { text-align: center; margin-top: 25px; margin-bottom: 40px;}
+        .promo-link { display: inline-block; color: #8e8e93; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-style: italic; text-decoration: none; border-bottom: 1px solid rgba(142, 142, 147, 0.4); padding-bottom: 3px; transition: opacity 0.3s ease, color 0.3s ease; cursor: pointer; }
+        .dark-bg .promo-link { color: var(--accent-silver); border-color: rgba(226, 226, 231, 0.3); }
+        .promo-link:hover { opacity: 0.7; color: var(--text-dark); }
+        .dark-bg .promo-link:hover { color: #fff; }
+
+        .info-sticker { background-color: rgba(255, 255, 255, 0.8); border-left: 4px solid #d1d1d6; padding: 15px 20px; border-radius: 0 10px 10px 0; max-width: 850px; margin: 0 auto 30px auto; text-align: justify; font-size: 0.85rem; line-height: 1.6; color: var(--text-muted-light); font-style: italic; box-shadow: 0 5px 15px rgba(0,0,0,0.03); animation: organicFloatAlt 8s ease-in-out infinite 0.5s; }
+        .info-sticker.dark-sticker { background-color: rgba(20, 20, 22, 0.9); border-left: 4px solid var(--accent-silver); color: #a1a1a6; box-shadow: 0 5px 20px rgba(0,0,0,0.4); }
+        .info-sticker b { font-weight: 600; color: var(--text-dark); }
+        .info-sticker.dark-sticker b { color: var(--text-light); }
+
+        /* =========================================
+           SECCIÓN COMBOS (INTERACTIVO)
+        ========================================= */
+        .combos-vip-section { background: linear-gradient(180deg, #0a0a0c 0%, #000000 100%); padding: 120px 20px 60px; border-top: 1px solid #1c1c1e; width: 100%; }
+        
+        .combo-tabs-container {
+            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 25px; max-width: 900px; margin-left: auto; margin-right: auto;
+        }
+        .combo-tab {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(226, 226, 231, 0.2); color: #a1a1a6;
+            padding: 12px 24px; border-radius: 30px; font-family: 'Montserrat', sans-serif; font-weight: 700;
+            font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease;
+        }
+        .combo-tab:hover { background: rgba(255, 255, 255, 0.08); color: #fff; transform: translateY(-2px); }
+        .combo-tab.active { background: #fff; color: #000; box-shadow: 0 5px 15px rgba(255,255,255,0.2); border: none; font-weight: 800; }
+        .combo-tab.sillage-tab.active { background: var(--silver-gradient); color: #fff; box-shadow: 0 5px 20px rgba(226, 226, 231, 0.3); }
+
+        .combo-disclaimer { text-align: center; color: var(--text-muted-dark); font-size: 0.85rem; font-style: italic; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        .combos-grid { display: block; width: 100%; max-width: 900px; margin: 0 auto; position: relative; min-height: 450px; }
+        .combo-box { display: none; background: linear-gradient(135deg, #141416 0%, #0c0c0e 100%); border: 1px solid rgba(226, 226, 231, 0.15); border-radius: 24px; padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); width: 100%; animation: fadeInTab 0.5s ease forwards; }
+        .combo-box.active-combo { display: block; }
+        .combo-box:nth-child(3) { border-color: rgba(226, 226, 231, 0.3); }
+        
+        .combo-row { display: flex; justify-content: space-between; align-items: center; padding: 25px 0; border-bottom: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; gap: 20px; }
+        .combo-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .combo-visuals { display: flex; align-items: center; gap: 15px; position: relative; }
+        .combo-img-wrap { position: relative; width: clamp(65px, 12vw, 85px); height: clamp(90px, 18vw, 120px); border-radius: 12px; padding: 5px; display: flex; align-items: center; justify-content: center; }
+        .combo-img-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px;}
+        .plus-sign { font-size: 1.8rem; color: var(--text-muted-light); font-weight: 300; }
+        .upgrade-sticker { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); background: #ffffff; color: #000000; font-size: 0.55rem; font-weight: 800; padding: 3px 6px; border-radius: 8px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(0,0,0,0.8); z-index: 2; white-space: nowrap; }
+        
+        .combo-info { text-align: right; flex-grow: 1; display: flex; flex-direction: column; align-items: flex-end;}
+        .combo-price { font-size: 2.2rem; font-family: 'Playfair Display', serif; color: #fff; margin-bottom: 5px; }
+        .combo-gift { font-size: 0.8rem; color: var(--accent-silver); letter-spacing: 1px; text-transform: uppercase; font-weight: 500; }
+        .combo-desc { font-size: 0.75rem; color: #8e8e93; font-style: italic; margin-top: 6px; }
+        
+        /* BLACK MONTH PROMO - TARJETAS ESTÁTICAS (NUEVO DISEÑO CUADRADO) */
+        .black-month-box {
+            background: linear-gradient(135deg, #09090b 0%, #1c1c1e 100%);
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 20px;
+            padding: 50px 40px; margin: 60px auto 40px auto; max-width: 1050px;
+            box-shadow: 0 0 50px rgba(255,255,255,0.05), inset 0 0 20px rgba(255,255,255,0.03);
+            position: relative; overflow: hidden; text-align: left;
+        }
+        .black-month-box::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotateGlow 15s linear infinite; z-index: 0; pointer-events: none;
+        }
+        @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .bm-content-layer { position: relative; z-index: 1; }
+        .bm-header h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(2.2rem, 5vw, 3.5rem); letter-spacing: 3px; text-align: center; margin-bottom: 10px; color: #fff; text-shadow: 0 0 20px rgba(255,255,255,0.4); text-transform: uppercase; }
+        .bm-header p { text-align: center; color: var(--accent-silver); font-style: italic; font-size: 1.15rem; margin-bottom: 30px; }
+        .bm-intro { font-size: 1.1rem; color: #e2e2e7; margin-bottom: 40px; text-align: center; font-weight: 500; line-height: 1.6; max-width: 800px; margin-left: auto; margin-right: auto;}
+        
+        /* Grid de Tarjetas Estáticas */
+        .bm-cards-container { display: grid; grid-template-columns: 1fr; gap: 25px; margin-bottom: 40px; }
+        @media(min-width: 850px){ .bm-cards-container { grid-template-columns: repeat(3, 1fr); } }
+        
+        .bm-static-card {
+            background: linear-gradient(180deg, #141416 0%, #0c0c0e 100%);
+            border: 1px solid rgba(226, 226, 231, 0.15); border-top: 4px solid var(--accent-silver);
+            border-radius: 16px; padding: 35px 25px; display: flex; flex-direction: column; align-items: center;
+            text-align: center; transition: transform 0.3s ease, border-color 0.3s ease; box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+        .bm-static-card:hover { transform: translateY(-5px); border-color: rgba(226, 226, 231, 0.4); box-shadow: 0 20px 45px rgba(0,0,0,0.8); }
+        
+        .bm-card-header { margin-bottom: 25px; }
+        .bm-card-header strong { display: block; color: #fff; font-size: 1.3rem; font-family: 'Playfair Display', serif; margin-bottom: 5px; }
+        .bm-card-header span { color: #8e8e93; font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; }
+        
+        .add-perfume-btn { 
+            background: #fff; color: #000; border: none; padding: 12px 20px; border-radius: 25px; 
+            font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-bottom: 20px; display: flex; 
+            align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif; 
+            box-shadow: 0 5px 15px rgba(255,255,255,0.15); transition: transform 0.2s, background 0.2s; width: 100%; justify-content: center;
+        }
+        .add-perfume-btn:hover { transform: scale(1.03); background: var(--silver-gradient); }
+        
+        .bm-price-real { color: #a1a1a6; font-size: 0.95rem; margin-bottom: 20px; }
+        .bm-price-real strong { display: block; font-size: 2.2rem; color: #fff; font-family: 'Playfair Display', serif; margin: 5px 0; }
+        .bm-price-real strike { color: #6e6e73; font-size: 1rem; text-decoration-thickness: 1.5px;}
+        
+        .bm-details { font-size: 0.85rem; color: #a1a1a6; line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; width: 100%; flex-grow: 1; display: flex; flex-direction: column; justify-content: center;}
+        .bm-gift-text { color: #e2e2e7; font-weight: 600; margin-top: 10px; font-style: italic; }
+        
+        .bm-shipping-badge { background: rgba(255,255,255,0.1); color: #fff; padding: 8px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; margin-top: 20px; width: 100%; text-transform: uppercase; border: 1px dashed rgba(255,255,255,0.3);}
+        
+        .bm-screenshot-note { text-align: center; color: var(--accent-silver); font-size: 1rem; font-weight: 600; margin-top: 20px; padding: 15px; border-radius: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); }
+        
+        .bm-footer { text-align: center; color: #a1a1a6; font-size: 0.95rem; padding-top: 30px; border-top: 1px dashed rgba(255,255,255,0.2); line-height: 1.6; max-width: 850px; margin: 30px auto 0;}
+        .bm-small-disclaimer { font-size: 0.75rem; color: #6e6e73; text-align: center; margin-top: 20px; font-style: italic; }
+        
+        .combo-marketing-note { max-width: 800px; margin: 40px auto 0 auto; text-align: justify; color: var(--text-muted-dark); font-size: 0.95rem; line-height: 1.6; padding: 25px; border: 1px dashed rgba(226, 226, 231, 0.2); border-radius: 15px; }
+        .refill-placeholder { margin-top: 40px; display: flex; flex-direction: column; align-items: center; color: var(--text-muted-dark); font-style: italic; font-size: 0.95rem; width: 100%; }
+        .refill-box { width: clamp(200px, 40vw, 350px); height: clamp(200px, 40vw, 350px); border: 1px solid rgba(226, 226, 231, 0.15); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; background: linear-gradient(135deg, #141416 0%, #0c0c0e 100%); box-shadow: 0 20px 40px rgba(0,0,0,0.6); overflow: hidden; transition: transform 0.4s ease, border-color 0.4s ease; }
+        .refill-box:hover { transform: translateY(-5px); border-color: rgba(226, 226, 231, 0.4); }
+        .refill-img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* =========================================
+           CATÁLOGO & BODY CARE ORIGINALES
+        ========================================= */
+        .catalog-section { background-color: #08080a; padding: 120px 20px; border-top: 1px solid #1c1c1e; }
+        .body-care { background-color: var(--bg-light); color: var(--text-dark); padding: 120px 20px; }
+        .body-care h2 { font-size: clamp(2.1rem, 4.8vw, 3.8rem); margin-bottom: 30px; background: linear-gradient(90deg, #1d1d1f, #515154); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .body-care-slider-wrapper { width: 100%; max-width: 900px; margin: 40px auto 0; position: relative; }
+        .body-care-slide { background-color: #ffffff; border: 1px solid #e5e5ea; border-radius: 20px; padding: 40px 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.06); display: flex; flex-direction: column; align-items: center; text-align: center; animation: organicFloat 8s ease-in-out infinite; }
+        .body-care-icon { font-size: 3rem; margin-bottom: 20px; color: #d1d1d6; }
+        .body-care-slide h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--text-dark); margin-bottom: 15px; }
+        .body-care-slide p { font-size: 1.05rem; color: var(--text-muted-light); line-height: 1.6; text-align: justify; max-width: 700px; }
+        .body-care-slide b { color: var(--text-dark); font-weight: 600; }
+
+        /* =========================================
+           TARJETAS DECANT (FLIP Y TAMAÑOS)
+        ========================================= */
+        .showcase-container { display: flex; flex-direction: column; gap: 40px; width: 100%; max-width: 1100px; margin-top: 50px; margin-bottom: 40px;}
+        @media(min-width: 900px) { .showcase-container { flex-direction: row; } }
+
+        .flip-card { background-color: transparent; width: 100%; height: 600px; perspective: 1000px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; }
+        @media (hover: hover) and (pointer: fine) { .flip-card:hover .flip-card-inner { transform: rotateY(180deg); } }
+        .flip-card.is-flipped .flip-card-inner { transform: rotateY(180deg); }
+
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 24px; border: 1px solid rgba(226, 226, 231, 0.15); background: linear-gradient(135deg, #141416 0%, #0a0a0c 100%); box-shadow: 0 15px 40px rgba(0,0,0,0.5); padding: 40px 30px; display: flex; flex-direction: column; overflow: hidden; }
+        .flip-card-back { transform: rotateY(180deg); background: linear-gradient(135deg, #0a0a0c 0%, #1a1a1d 100%); justify-content: flex-start; align-items: center; text-align: center; }
+
+        .card-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent-silver); margin-bottom: 30px; }
+        .card-front-content { display: flex; flex-direction: row; align-items: center; gap: 20px; height: 100%; text-align: left; }
+        .card-img-container { flex: 1; display: flex; align-items: center; justify-content: center; }
+        .card-img-container img { max-height: 250px; object-fit: contain; }
+        .card-accords { flex: 1.2; display: flex; flex-direction: column; width: 100%; }
+        .accords-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted-dark); margin-bottom: 15px; text-align: left; }
+        .accord-bar { height: 24px; border-radius: 4px; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.8); box-shadow: 0 2px 5px rgba(0,0,0,0.3); margin-right: auto; margin-left: 0; }
+
+        .pyramid-level { margin-bottom: 25px; }
+        .pyramid-level h5 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-silver); margin: 0 0 10px 0; border-bottom: 1px solid rgba(226, 226, 231, 0.2); padding-bottom: 5px; display: inline-block; }
+        .pyramid-level p { font-size: 0.95rem; line-height: 1.6; color: var(--text-muted-light); }
+        .pyramid-level strong { color: var(--text-light); font-weight: 500; display: block; margin-bottom: 5px; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+        .flip-hint { font-size: 0.75rem; color: var(--text-muted-dark); font-style: italic; margin-top: auto; text-align: center; width: 100%; padding-top: 10px; }
+
+        @media (max-width: 600px) { 
+            .flip-card { height: 630px; } 
+            .flip-card-front, .flip-card-back { padding: 30px 20px; }
+            .card-title { margin-bottom: 15px; font-size: 1.6rem; }
+            .card-front-content { flex-direction: column; text-align: center; }
+            .accords-title { text-align: center; }
+            .accord-bar { margin-left: auto; margin-right: auto; }
+            .pyramid-level { margin-bottom: 15px; }
+            .pyramid-level p { font-size: 0.85rem; line-height: 1.4; margin-top: 4px; }
+            .pyramid-level h5 { margin-bottom: 4px; font-size: 0.75rem; }
+            .pyramid-level strong { font-size: 1rem; margin-bottom: 2px; }
+        }
+
+        /* TAMAÑOS DECANTS */
+        .sizes-container { width: 100%; max-width: 1100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+        .size-card { background-color: #141416; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 40px 25px; display: flex; flex-direction: column; align-items: center; height: 100%; transition: box-shadow 0.6s ease, border-color 0.6s ease; position: relative; overflow: hidden; }
+        .size-card:hover { border-color: rgba(226, 226, 231, 0.4); box-shadow: 0 25px 60px rgba(0,0,0,0.9); }
+        .real-image { width: 100%; height: 220px; object-fit: contain; margin-bottom: 25px; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .size-card:hover .real-image { transform: scale(1.1); }
+        .size-title { font-size: 1.8rem; margin-bottom: 10px; font-family: 'Playfair Display', serif; color: var(--accent-silver); }
+        .size-desc { font-size: 0.95rem; color: var(--text-muted-dark); line-height: 1.5; margin-bottom: 15px; }
+        .sprays-badge { background-color: rgba(255,255,255,0.1); padding: 6px 15px; border-radius: 20px; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: #fff; font-weight: 500; }
+
+        /* =========================================
+           TENDENCIAS Y CULTURA OLFATIVA (FILTROS)
+        ========================================= */
+        .tendencias-section { background-color: var(--bg-dark); }
+        .interactive-filter-box {
+            background: linear-gradient(135deg, rgba(20,20,22,0.9) 0%, rgba(10,10,12,0.95) 100%);
+            border: 1px solid rgba(226, 226, 231, 0.15); border-radius: 20px; padding: 35px 40px; margin-bottom: 50px;
+            width: 100%; max-width: 900px; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            display: flex; flex-direction: column; gap: 30px;
+        }
+        .filter-group { display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .filter-label { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--accent-silver); text-transform: uppercase; letter-spacing: 2px; }
+        .filter-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .f-btn {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(226, 226, 231, 0.2); color: var(--text-muted-dark); 
+            padding: 12px 28px; border-radius: 30px; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease;
+        }
+        .f-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; transform: translateY(-2px); }
+        .f-btn.active { background: var(--silver-gradient); color: #000; box-shadow: 0 8px 25px rgba(255,255,255,0.2); border: none; font-weight: 800; }
+        
+        .dynamic-results-wrapper { width: 100%; max-width: 1200px; margin: 0 auto; animation: fadeInTab 0.5s ease; }
+        .results-header { margin-bottom: 40px; text-align: center; }
+        .results-header h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #fff; margin-bottom: 15px; }
+        .results-header p { font-size: 1.05rem; color: #a1a1a6; font-style: italic; max-width: 850px; margin: 0 auto; line-height: 1.7; text-align: justify;}
+        
+        .perfume-category-title { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #fff; margin: 50px 0 25px 0; border-bottom: 1px solid rgba(226, 226, 231, 0.15); padding-bottom: 15px; text-align: left; display: flex; align-items: center; gap: 10px; }
+        .rec-title { color: var(--accent-silver); }
+        
+        .region-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 30px; }
+        .r-card {
+            background: linear-gradient(180deg, #141416 0%, #0c0c0e 100%); border: 1px solid rgba(226, 226, 231, 0.1); border-radius: 20px; padding: 35px 25px;
+            display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.4s ease, border-color 0.4s ease; box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+        .r-card:hover { transform: translateY(-8px); border-color: rgba(226, 226, 231, 0.3); }
+        .rec-card { border-color: rgba(226, 226, 231, 0.25); background: linear-gradient(135deg, #18181b 0%, #0f0f12 100%); position: relative;}
+        
+        .niche-badge { position: absolute; top: 15px; right: 15px; background: var(--silver-gradient); color: #000; font-size: 0.65rem; font-weight: 800; padding: 4px 10px; border-radius: 12px; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
+        .r-card img { width: 100%; height: 220px; object-fit: contain; margin-bottom: 25px; filter: drop-shadow(0 15px 20px rgba(0,0,0,0.5)); transition: transform 0.4s; }
+        .r-card:hover img { transform: scale(1.08); }
+        .r-card h4 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--text-light); margin-bottom: 8px; }
+        .r-card .brand { font-size: 0.8rem; color: #8e8e93; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-weight: 600;}
+        .rec-card h4 { color: var(--accent-silver); }
+        .r-card p { font-size: 0.95rem; color: #a1a1a6; line-height: 1.7; text-align: justify; margin-bottom: 10px; }
+        .r-card p strong { color: var(--text-light); font-weight: 600; font-family: 'Playfair Display', serif; font-size: 1.05rem; letter-spacing: 0.5px;}
+        
+        @media(max-width: 600px) { .interactive-filter-box { padding: 25px 20px; } .f-btn { padding: 10px 20px; font-size: 0.75rem; } .results-header h3 { font-size: 2rem; } .r-card { padding: 25px 15px; } .r-card img { height: 180px; } }
+
+        /* =========================================
+           BOTÓN VOLVER AL INICIO
+        ========================================= */
+        .back-to-top-container {
+            width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 40px 0 20px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 40px;
+        }
+        .back-to-top-btn {
+            background: none; border: none; color: var(--text-muted-dark); cursor: pointer; display: flex;
+            flex-direction: column; align-items: center; gap: 8px; transition: color 0.3s ease, transform 0.3s ease; text-decoration: none;
+        }
+        .back-to-top-btn i { font-size: 1.5rem; }
+        .back-to-top-btn span { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; }
+        .back-to-top-btn:hover { color: var(--accent-silver); transform: translateY(-5px); }
+
+        /* Widget de Reseñas */
+        .reviews-widget { position: fixed; bottom: 30px; right: 30px; z-index: 100; display: flex; align-items: center; gap: 15px; }
+        .reviews-tooltip { background: rgba(255, 255, 255, 0.95); color: #000; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; box-shadow: 0 10px 25px rgba(0,0,0,0.2); opacity: 0; transform: translateX(20px); transition: opacity 0.3s ease, transform 0.3s ease; pointer-events: none; white-space: nowrap; }
+        .reviews-widget:hover .reviews-tooltip { opacity: 1; transform: translateX(0); }
+        .reviews-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--silver-gradient); border: none; box-shadow: 0 10px 30px rgba(255,255,255,0.15); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); animation: pulse-widget-heart 2s infinite; }
+        .reviews-btn:hover { transform: scale(1.1); animation: none; }
+        
+        @keyframes pulse-widget-heart { 0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); } 70% { box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
+        @keyframes pulse-widget { 0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3); } 70% { box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
+        
+        .reviews-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+        .reviews-modal.active { opacity: 1; visibility: visible; }
+        .reviews-modal-content { background: rgba(20, 20, 22, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); width: 90%; max-width: 600px; height: 85vh; border-radius: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); display: flex; flex-direction: column; transform: translateY(50px) scale(0.95); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; }
+        .reviews-modal.active .reviews-modal-content { transform: translateY(0) scale(1); }
+        .modal-header { padding: 30px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(180deg, rgba(30,30,32,0.9) 0%, rgba(20,20,22,0) 100%); }
+        .modal-header h2 { font-size: 1.8rem; color: #fff; margin: 0; background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .close-modal { background: none; border: none; color: #8e8e93; font-size: 1.5rem; cursor: pointer; transition: color 0.3s; }
+        .close-modal:hover { color: #fff; }
+        .reviews-list { flex-grow: 1; overflow-y: auto; padding: 20px 30px; display: flex; flex-direction: column; gap: 20px; }
+        .reviews-list::-webkit-scrollbar { width: 6px; }
+        .reviews-list::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+        .reviews-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        .review-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 20px; display: flex; gap: 15px; transition: transform 0.2s ease, background 0.2s ease; }
+        .review-card:hover { background: rgba(255, 255, 255, 0.06); transform: translateY(-2px); }
+        .reviewer-avatar { width: 45px; height: 45px; border-radius: 50%; background: #2a2a2c; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--accent-silver); flex-shrink: 0; overflow: hidden; }
+        .reviewer-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .review-content { flex-grow: 1; }
+        .reviewer-name { font-weight: 600; color: #fff; font-size: 0.95rem; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+        .stars { color: var(--accent-silver); font-size: 0.8rem; }
+        .review-text { color: #a1a1a6; font-size: 0.9rem; line-height: 1.5; text-align: left; }
+        .modal-footer { padding: 25px 30px; background: rgba(10, 10, 12, 0.9); border-top: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
+        .modal-footer p { font-size: 0.9rem; color: #e2e2e7; margin-bottom: 15px; font-weight: 500; }
+        .suggest-btn { display: inline-block; background: #fff; color: #000; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 0.85rem; transition: transform 0.2s, box-shadow 0.2s; }
+        .suggest-btn:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
+        .small-note { display: block; font-size: 0.7rem; color: #6e6e73; margin-top: 10px; font-style: italic; }
+        @media (max-width: 768px) { .reviews-widget { bottom: 20px; right: 20px; } .reviews-btn { width: 50px; height: 50px; font-size: 1.2rem; } .reviews-tooltip { display: none; } .reviews-modal-content { height: 90vh; width: 95%; } }
+
+        /* FOOTER */
+        footer { background-color: #000; border-top: 1px solid #1c1c1e; color: var(--text-muted-dark); text-align: center; padding: 40px 20px; font-size: 0.9rem; }
+        .footer-content { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .divider { display: none; }
+        @media (min-width: 600px) { .divider { display: inline; color: #444; } }
+        .footer-badge { display: block; margin-top: 20px; font-size: 0.75rem; font-family: 'Playfair Display', serif; letter-spacing: 0.15em; color: #444; text-transform: uppercase; }
+
+        /* =========================================
+           MODAL SELECTOR DE PERFUMES (INTERACTIVO)
+        ========================================= */
+        .perfume-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+        .perfume-modal.active { opacity: 1; visibility: visible; }
+        .perfume-modal-content { background: #0c0c0e; border: 1px solid rgba(226, 226, 231, 0.2); width: 95%; max-width: 900px; height: 85vh; border-radius: 24px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); display: flex; flex-direction: column; transform: translateY(50px) scale(0.95); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); overflow: hidden; }
+        .perfume-modal.active .perfume-modal-content { transform: translateY(0) scale(1); }
+        .perfume-modal-header { padding: 25px 30px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(180deg, rgba(20,20,22,0.9) 0%, rgba(12,12,14,0.9) 100%); }
+        .perfume-modal-header h2 { font-size: 1.5rem; color: #fff; margin: 0; font-family: 'Playfair Display', serif; }
+        .perfume-modal-header p { font-size: 0.85rem; color: var(--accent-silver); font-family: 'Montserrat', sans-serif; margin-top: 5px; }
+        .perfume-grid { flex-grow: 1; overflow-y: auto; padding: 30px; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; }
+        .perfume-grid::-webkit-scrollbar { width: 8px; }
+        .perfume-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+        .perfume-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
+        .p-item { background: linear-gradient(180deg, #141416 0%, #0a0a0c 100%); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 15px; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s; text-align: center; }
+        .p-item:hover { transform: translateY(-5px); border-color: var(--accent-silver); background: linear-gradient(180deg, #1c1c1e 0%, #0a0a0c 100%); }
+        .p-item img { width: 100%; height: 120px; object-fit: contain; margin-bottom: 15px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
+        .p-item h4 { color: #fff; font-size: 0.85rem; font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 4px; }
+        .p-item span { color: #8e8e93; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+        @media (max-width: 600px) { .perfume-grid { grid-template-columns: repeat(2, 1fr); padding: 20px; gap: 15px;} .p-item img { height: 100px; } .perfume-modal-content { height: 90vh; } }
+    </style>
+    
+    <!-- LÓGICA INTERACTIVA GLOBAL PARA BLACK MONTH -->
+    <script>
+        let bmActiveCard = 0;
+        let bmRequiredSelections = 0;
+        let bmSelectedPerfumes = [];
+
+        function openBMModal(cardId, requiredCount) {
+            bmActiveCard = cardId;
+            bmRequiredSelections = requiredCount;
+            bmSelectedPerfumes = [];
+            updateModalHeader();
+            const modal = document.getElementById('perfumeModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function updateModalHeader() {
+            const p = document.querySelector('.perfume-modal-header p');
+            if (bmRequiredSelections > 1) {
+                p.innerText = `Selecciona ${bmRequiredSelections} fragancias (Llevas ${bmSelectedPerfumes.length} de ${bmRequiredSelections})`;
+            } else {
+                p.innerText = `Catálogo completo SHATIUM (22 opciones disponibles)`;
+            }
+        }
+
+        function selectPerfume(id, name, type) {
+            if (bmActiveCard === 0) return; 
+            
+            bmSelectedPerfumes.push({ id, name, type });
+            
+            if (bmSelectedPerfumes.length === bmRequiredSelections) {
+                processComboSelection();
+                const modal = document.getElementById('perfumeModal');
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                updateModalHeader();
+            }
+        }
+
+        function processComboSelection() {
+            if (bmActiveCard === 1) {
+                const p = bmSelectedPerfumes[0];
+                const base = p.type === 'Essential+' ? 28.00 : 25.00;
+                const price = base * 0.9;
+                
+                document.getElementById('bm-card-1-btn').innerHTML = `<i class="fa-solid fa-check"></i> Elegido: ${p.name}`;
+                document.getElementById('bm-card-1-price').innerHTML = `Valor Final: <strong>$${price.toFixed(2)}</strong> <strike>$${base.toFixed(2)}</strike>`;
+                document.getElementById('bm-card-1-details').innerHTML = `<p>Descuento aplicado de primer perfume (${p.type}) con 10% de descuento, sin regalo refill.</p>`;
+                
+            } else if (bmActiveCard === 2) {
+                const p1 = bmSelectedPerfumes[0];
+                const p2 = bmSelectedPerfumes[1];
+                
+                const base1 = p1.type === 'Essential+' ? 28.00 : 25.00;
+                const price1 = base1 * 0.9;
+                
+                const base2 = p2.type === 'Essential+' ? 28.00 : 25.00;
+                const price2 = p2.type === 'Essential+' ? base2 * 0.85 : base2 * 0.80; 
+                
+                const totalBase = base1 + base2;
+                const totalPrice = price1 + price2;
+                
+                document.getElementById('bm-card-2-btn').innerHTML = `<i class="fa-solid fa-check"></i> Elegidos (Toca para cambiar)`;
+                document.getElementById('bm-card-2-price').innerHTML = `Valor Final: <strong>$${totalPrice.toFixed(2)}</strong> <strike>$${totalBase.toFixed(2)}</strike>`;
+                document.getElementById('bm-card-2-details').innerHTML = `
+                    <p>1er: ${p1.type} (${p1.name}) al 10% dcto.</p>
+                    <p>2do: ${p2.type} (${p2.name}) al ${p2.type === 'Essential+' ? '15%' : '20%'} dcto.</p>
+                    <p class="bm-gift-text">🎁 Aplica regalo: 1 Refill de lujo.</p>
+                `;
+                
+            } else if (bmActiveCard === 3) {
+                const p1 = bmSelectedPerfumes[0];
+                const p2 = bmSelectedPerfumes[1];
+                const p3 = bmSelectedPerfumes[2];
+                
+                let countEPlus = 0;
+                let totalBase = 0;
+                bmSelectedPerfumes.forEach(p => {
+                    if(p.type === 'Essential+') countEPlus++;
+                    totalBase += p.type === 'Essential+' ? 28.00 : 25.00;
+                });
+                
+                let totalPrice = ( (3 - countEPlus) * 20.00 ) + ( countEPlus * (70.00 / 3.0) );
+                
+                document.getElementById('bm-card-3-btn').innerHTML = `<i class="fa-solid fa-check"></i> 3 Elegidos (Toca para cambiar)`;
+                document.getElementById('bm-card-3-price').innerHTML = `Valor Final: <strong>$${totalPrice.toFixed(2)}</strong> <strike>$${totalBase.toFixed(2)}</strike>`;
+                document.getElementById('bm-card-3-details').innerHTML = `
+                    <p>1. ${p1.name} (${p1.type})</p>
+                    <p>2. ${p2.name} (${p2.type})</p>
+                    <p>3. ${p3.name} (${p3.type})</p>
+                    <p class="bm-gift-text">🎁 Incluye: 2 Regalos Refill.</p>
+                `;
+            }
+        }
+    </script>
+</head>
+<body id="inicio">
+
+    <!-- =========================================
+         CABECERA (SIEMPRE VISIBLE)
+         ========================================= -->
+    <section class="hero reveal active">
+        <div class="hero-brand-wrapper">
+            <div class="logo-container">
+                <img src="shatvf.png" alt="Logotipo SHATIUM" onerror="this.style.opacity='0'">
+            </div>
+            <div class="hero-divider"></div>
+            <h1>SHATIUM</h1>
+            <h2>Tu esencia elevada a la perfección</h2>
+            
+            <!-- NAVEGACIÓN PÍLDORA -->
+            <div class="hero-menu-pill reveal delay-1 active">
+                <a data-target="tab-essentials" class="menu-btn active"><span>ESSENTIALS</span></a>
+                <div class="menu-divider-group">
+                    <a data-target="tab-originals" class="menu-btn normal">ORIGINALS</a>
+                    <span class="menu-vert-line"></span>
+                    <a data-target="tab-decants" class="menu-btn normal">DECANTS</a>
+                </div>
+            </div>
+            
+            <!-- BOTON BLACK DAYS EN EL ENCABEZADO -->
+            <button class="hero-black-days reveal delay-2" onclick="document.querySelector('[data-target=\'tab-essentials\']').click(); setTimeout(() => { const bm = document.getElementById('black-month-promo'); if(bm) bm.scrollIntoView({behavior:'smooth'}); }, 300);">
+                🔥 BLACK DAYS 🔥
+            </button>
+
+        </div>
+    </section>
+
+    <main>
+
+        <!-- =========================================
+             1. PESTAÑA ESSENTIALS
+             ========================================= -->
+        <div id="tab-essentials" class="tab-pane active">
+            
+            <section class="concept reveal light-bg">
+                <h2>La Línea Essentials</h2>
+                <p>Inspirada en las firmas más exclusivas del mundo. <span>Essentials</span> es tu entrada a la alta perfumería, aromas versátiles y magnéticos para tu día a día. Logramos una fórmula <span>idéntica al original</span>, pero con una duración y proyección que te acompañarán impecablemente hasta la noche.</p>
+                <div class="reveal"><div class="highlight-box"><p style="margin: 0; font-size: 1.1rem;">Lujo inteligente a tu alcance. Haz de estas maravillas tu sello personal pidiendo nuestra <span>línea "Essentials"</span> y descubre la magia de llevar una obra de arte todos los días.</p></div></div>
+
+                <h3 class="gallery-title reveal delay-1">Ejemplos de perfumes <em>"Essentials"</em></h3>
+                <div class="gallery-container">
+                    <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje1.jpg" alt="Phantom" class="product-image"><h4 class="product-title">Phantom - Essentials</h4></div></div>
+                    <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje2.jpg" alt="Invictus" class="product-image"><h4 class="product-title">Invictus - Essentials</h4></div></div>
+                    <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje3.jpg" alt="Cloud" class="product-image"><h4 class="product-title">Cloud - Essentials</h4></div></div>
+                    <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje4.jpg" alt="Toy 2 Bubble Gum" class="product-image"><h4 class="product-title">Bubble Gum - Essentials</h4></div></div>
+                </div>
+
+                <div class="info-sticker light-sticker reveal">
+                    <b>El Secreto:</b> La versión clásica es ideal para el día a día, con un equilibrio perfecto entre estela y duración. ¿Quieres dejar huella a donde vayas? Elige la versión <b>+20% Esencia</b>: al tener mayor pureza de aceites, lograrás un aroma profundo y una fijación extrema en tu piel que no pasará desapercibida.
+                </div>
+
+                <div class="pricing-wrapper reveal">
+                    <div class="pricing-card light">
+                        <h3>Essentials</h3>
+                        <div class="pricing-grid-internal pricing-header"><span class="col-size">Tamaño</span><span class="col-base">Clásico</span><span class="col-upgrade">+20% Esencia</span></div>
+                        <div class="pricing-grid-internal"><span class="col-size">30 ml</span><span class="col-base">$13</span><span class="col-upgrade">$15</span></div>
+                        <div class="pricing-grid-internal"><span class="col-size">50 ml</span><span class="col-base">$17</span><span class="col-upgrade">$20</span></div>
+                        <div class="pricing-grid-internal"><span class="col-size">100 ml</span><span class="col-base">$25</span><span class="col-upgrade">$28</span></div>
+                    </div>
+                </div>
+
+                <div class="promo-link-wrapper reveal delay-1">
+                    <a class="promo-link goto-combos">Descubrir Promociones Exclusivas ✦</a>
+                </div>
+            </section>
+
+            <section class="niche-section reveal dark-bg">
+                <h2>Essentials+ <em> "Nicho"</em></h2>
+                <p>¿Qué es un perfume Nicho? Es <span>arte puro embotellado</span>. Creado con ingredientes exóticos y técnicas artesanales, es para quienes no temen destacar. Son obras maestras <span>100% unisex</span> que reaccionan a la química de tu piel, creando un aroma irrepetible. Nadie más olerá como tú.</p>
+                <div class="reveal"><div class="highlight-box"><p style="margin: 0; font-size: 1.1rem; color: var(--text-light);">Atrévete a dar el salto a la verdadera exclusividad. Descubre sus notas secretas, déjate envolver por su complejidad y eleva tu presencia con la sofisticada línea <span>"Essential Plus"</span>.</p></div></div>
+
+                <h3 class="gallery-title reveal delay-1">Ejemplos de perfumes <em>"Essentials+"</em></h3>
+                <div class="gallery-container">
+                    <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje5.jpg" alt="Instant Crush - Essential+" class="product-image"><h4 class="product-title">Instant Crush - Essential+</h4></div></div>
+                    <div class="gallery-wrapper reveal"><div class="product-card"><img src="sheje6.jpg" alt="Baccarat Rouge - Essential+" class="product-image"><h4 class="product-title">Baccarat Rouge - Essential+</h4></div></div>
+                    <div class="gallery-wrapper reveal"><div class="product-card"><img src="shejef7.jpg" alt="Ombre Leather - Essential+" class="product-image"><h4 class="product-title">Ombre Leather - Essential+</h4></div></div>
+                    <div class="gallery-wrapper reveal"><div class="product-card"><img src="shejef8.jpg" alt="Erba Pura - Essential+" class="product-image"><h4 class="product-title">Erba Pura - Essential+</h4></div></div>
+                </div>
+
+                <div class="info-sticker dark-sticker reveal">
+                    <b>El Secreto:</b> La versión clásica es ideal para el día a día, con un equilibrio perfecto entre estela y duración. ¿Quieres dejar huella a donde vayas? Elige la versión <b>+20% Esencia</b>: al tener mayor pureza de aceites, lograrás un aroma profundo y una fijación extrema en tu piel que no pasará desapercibida.
+                </div>
+
+                <div class="pricing-wrapper reveal">
+                    <div class="pricing-card silver-card">
+                        <h3>Essential Plus</h3>
+                        <div class="pricing-grid-internal pricing-header"><span class="col-size">Tamaño</span><span class="col-base">Clásico</span><span class="col-upgrade">+20% Esencia</span></div>
+                        <div class="pricing-grid-internal"><span class="col-size">30 ml</span><span class="col-base">$14</span><span class="col-upgrade">$16</span></div>
+                        <div class="pricing-grid-internal"><span class="col-size">50 ml</span><span class="col-base">$18</span><span class="col-upgrade">$20</span></div>
+                        <div class="pricing-grid-internal"><span class="col-size">100 ml</span><span class="col-base">$27</span><span class="col-upgrade">$30</span></div>
+                    </div>
+                </div>
+
+                <div class="promo-link-wrapper reveal delay-1">
+                    <a class="promo-link goto-combos">Descubrir Promociones Exclusivas ✦</a>
+                </div>
+            </section>
+
+            <section class="catalog-section reveal">
+                <h2>Un Catálogo en Constante Evolución</h2>
+                <p>El lujo no descansa, nosotros tampoco. Nuestro universo se renueva constantemente con los lanzamientos mundiales más codiciados. Nuestro compromiso es simple, entregarte <span>calidad suprema</span> y la máxima elegancia olfativa en cada gota de tu elección, asegurando que siempre tengas acceso a lo último en tendencias mundiales de perfumería.</p>
+            </section>
+
+            <section class="body-care reveal light-bg">
+                <div style="max-width: 900px;" class="reveal">
+                    <h2>SHATIUM Body Care</h2>
+                    <p style="font-size: clamp(1.05rem, 2.5vw, 1.25rem); color: var(--text-muted-light); line-height: 1.75; margin-bottom: 22px; text-align: justify;">Lleva tu aroma favorito más allá del frasco de cristal. Ahora, nuestra selecta colección de fragancias está <strong>disponible para toda nuestra línea de cuidado corporal</strong>, permitiéndote disfrutar de tu esencia preferida en cada paso de tu rutina.</p>
+                </div>
+                
+                <div class="body-care-slider-wrapper reveal delay-1">
+                    <div class="body-care-slide">
+                        <div class="body-care-icon">✨</div>
+                        <h3>Cremas y Lociones a tu Medida</h3>
+                        <p>¿Tienes una fragancia favorita de nuestro catálogo? <b>Pídenos cualquier producto de nuestra línea Body Care perfumado con el aroma de tu elección.</b> <br><br> Al usar en conjunto tu perfume con nuestra crema hidratante a juego, lograrás un majestuoso efecto de capas que no solo nutre profundamente tu piel, sino que <b>multiplica la intensidad, estela y duración de tu aroma</b>, garantizando una presencia impecable e inconfundible durante todo el día.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- =========================================
+                 TENDENCIAS Y CULTURA OLFATIVA (BOTONES REGIONALES)
+                 ========================================= -->
+            <section class="tendencias-section reveal dark-section" style="background-color: var(--bg-dark); padding-top: 100px; padding-bottom: 80px;">
+                <h2 style="font-size: clamp(2.2rem, 5vw, 4rem); background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px;">Tendencias & <em>Cultura Olfativa</em></h2>
+                <p style="max-width: 850px; font-size: clamp(1.05rem, 2.8vw, 1.25rem); font-weight: 400; line-height: 1.75; margin-bottom: 40px; text-align: justify; color: var(--text-muted-dark);">En SHATIUM entendemos que un perfume está vivo y reacciona a su entorno. El majestuoso y diverso clima del Ecuador dicta cómo se desenvuelven las notas de tu fragancia. Selecciona tu región y descubre la perfumería más cotizada (Top Ventas) y nuestras exclusivas recomendaciones técnicas.</p>
+                
+                <!-- Selector Interactivo -->
+                <div class="interactive-filter-box reveal delay-1">
+                    <div class="filter-group">
+                        <span class="filter-label">1. Selecciona tu Región:</span>
+                        <div class="filter-buttons" id="region-selector">
+                            <button class="f-btn r-btn active" data-val="costa">Costa</button>
+                            <button class="f-btn r-btn" data-val="sierra">Sierra</button>
+                            <button class="f-btn r-btn" data-val="amazonia">Amazonía</button>
+                            <button class="f-btn r-btn" data-val="galapagos">Galápagos</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <span class="filter-label">2. ¿Para quién buscas la fragancia?</span>
+                        <div class="filter-buttons" id="gender-selector">
+                            <button class="f-btn g-btn active" data-val="mujer">Para Mujer</button>
+                            <button class="f-btn g-btn" data-val="hombre">Para Hombre</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenedor Dinámico de Resultados -->
+                <div class="dynamic-results-wrapper reveal delay-2" id="results-container">
+                    <!-- Inyectado por JS -->
+                </div>
+            </section>
+
+            <!-- =========================================
+                 COMBOS ESSENTIALS
+                 ========================================= -->
+            <section id="combos-exclusivos" class="combos-vip-section reveal" style="padding-bottom: 40px;">
+                <h2 style="font-size: clamp(2.2rem, 5vw, 4rem); background: var(--silver-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 40px;">Combos SHATIUM</h2>
+                
+                <!-- TABS DE COMBOS -->
+                <div class="combo-tabs-container reveal delay-1">
+                    <button class="combo-tab active" data-target="combo-set-1">Combo Essentials</button>
+                    <button class="combo-tab" data-target="combo-set-2">Combo Essentials+</button>
+                    <button class="combo-tab sillage-tab" data-target="combo-set-3">Shatium Sillage</button>
+                </div>
+
+                <!-- AVISO DE PRECIOS -->
+                <p class="combo-disclaimer reveal delay-1">* Nota: Los precios mostrados a continuación son referenciales (basados en 100 ml). El valor final de tu combo variará dependiendo del tamaño (ml) de los perfumes que elijas en tu pedido.</p>
+
+                <!-- CONTENEDORES DE COMBOS -->
+                <div class="combos-grid reveal delay-2">
+                    
+                    <!-- COMBO ESSENTIALS -->
+                    <div id="combo-set-1" class="combo-box active-combo">
+                        <div class="combo-row">
+                            <div class="combo-visuals"><div class="combo-img-wrap"><img src="sheje2.jpg" alt="Invictus"></div><span class="plus-sign">+</span><div class="combo-img-wrap"><img src="sheje3.jpg" alt="Cloud"></div></div>
+                            <div class="combo-info"><div class="combo-price">$46</div><div class="combo-gift">+ Obsequio: Refill Portátil</div><div class="combo-desc">Llévate dos Essential Clásicos</div></div>
+                        </div>
+                        <div class="combo-row">
+                            <div class="combo-visuals"><div class="combo-img-wrap"><span class="upgrade-sticker">+20% Esencia</span><img src="sheje1.jpg" alt="Phantom"></div><span class="plus-sign">+</span><div class="combo-img-wrap"><span class="upgrade-sticker">+20% Esencia</span><img src="sheje4.jpg" alt="Bubble Gum"></div></div>
+                            <div class="combo-info"><div class="combo-price">$52</div><div class="combo-gift">+ Obsequio: Refill Portátil</div><div class="combo-desc">Llévate dos +20% Esencia</div></div>
+                        </div>
+                        <div class="combo-row">
+                            <div class="combo-visuals"><div class="combo-img-wrap"><img src="sheje1.jpg" alt="Phantom"></div><span class="plus-sign">+</span><div class="combo-img-wrap"><span class="upgrade-sticker">+20% Esencia</span><img src="sheje3.jpg" alt="Cloud"></div></div>
+                            <div class="combo-info"><div class="combo-price">$48</div><div class="combo-gift">+ Obsequio: Refill Portátil</div><div class="combo-desc">Llévate 1 Clásico y 1 +20% Esencia</div></div>
+                        </div>
+                    </div>
+
+                    <!-- COMBO ESSENTIALS+ -->
+                    <div id="combo-set-2" class="combo-box">
+                        <div class="combo-row">
+                            <div class="combo-visuals"><div class="combo-img-wrap"><img src="sheje5.jpg" alt="Instant Crush"></div><span class="plus-sign">+</span><div class="combo-img-wrap"><img src="shejef8.jpg" alt="Erba Pura"></div></div>
+                            <div class="combo-info"><div class="combo-price">$50</div><div class="combo-gift">+ Obsequio: Refill Portátil</div><div class="combo-desc">Llévate dos Essential+ Clásicos</div></div>
+                        </div>
+                        <div class="combo-row">
+                            <div class="combo-visuals"><div class="combo-img-wrap"><span class="upgrade-sticker">+20% Esencia</span><img src="sheje6.jpg" alt="Baccarat"></div><span class="plus-sign">+</span><div class="combo-img-wrap"><span class="upgrade-sticker">+20% Esencia</span><img src="shejef7.jpg" alt="Ombre Leather"></div></div>
+                            <div class="combo-info"><div class="combo-price">$55</div><div class="combo-gift">+ Obsequio: Refill Portátil</div><div class="combo-desc">Llévate dos Essential+ (+20% Esencia)</div></div>
+                        </div>
+                        <div class="combo-row">
+                            <div class="combo-visuals"><div class="combo-img-wrap"><img src="shejef8.jpg" alt="Erba Pura"></div><span class="plus-sign">+</span><div class="combo-img-wrap"><span class="upgrade-sticker">+20% Esencia</span><img src="shejef7.jpg" alt="Ombre Leather"></div></div>
+                            <div class="combo-info"><div class="combo-price">$52</div><div class="combo-gift">+ Obsequio: Refill Portátil</div><div class="combo-desc">Llévate 1 Essential+ Clásico y 1 +20% Esencia</div></div>
+                        </div>
+                    </div>
+
+                    <!-- SHATIUM SILLAGE -->
+                    <div id="combo-set-3" class="combo-box">
+                        <div class="combo-row">
+                            <div class="combo-visuals"><div class="combo-img-wrap"><img src="sheje1.jpg" alt="Phantom"></div><span class="plus-sign">+</span><div class="combo-img-wrap"><img src="sheje5.jpg" alt="Instant Crush"></div></div>
+                            <div class="combo-info"><div class="combo-price">$47</div><div class="combo-gift">+ Obsequio: Refill Portátil</div><div class="combo-desc">Llévate 1 Essential y 1 Essential+ Clásicos</div></div>
+                        </div>
+                        <div class="combo-row">
+                            <div class="combo-visuals"><div class="combo-img-wrap"><span class="upgrade-sticker">+20% Esencia</span><img src="sheje4.jpg" alt="Bubble Gum"></div><span class="plus-sign">+</span><div class="combo-img-wrap"><span class="upgrade-sticker">+20% Esencia</span><img src="shejef8.jpg" alt="Erba Pura"></div></div>
+                            <div class="combo-info"><div class="combo-price">$55</div><div class="combo-gift">+ Obsequio: Refill Portátil</div><div class="combo-desc">Llévate 1 Essential y 1 Essential+ (+20% Esencia)</div></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="personaliza-nota" class="combo-marketing-note reveal delay-2">
+                    <strong>Tú dictas las reglas.</strong><br><br>
+                    Los combos anteriores son <em>pura inspiración</em> diseñada para guiar tu instinto, pero el creador de tu firma olfativa eres tú. Eres completamente libre de elegir cualquier fragancia de nuestro extenso catálogo y armar el set perfecto que defina tu estilo personal.
+                </div>
+
+                <div class="refill-placeholder reveal delay-3">
+                    <div class="refill-box"><img src="shatregalo.jpg" alt="Refill Portátil" class="refill-img" onerror="this.src='https://via.placeholder.com/400x400/1c1c1e/86868b?text=IMAGEN+DEL+REFILL'"></div>
+                    * Imagen referencial del obsequio "Refill".
+                </div>
+
+                <!-- SECCIÓN BLACK MONTH PROMO -->
+                <div id="black-month-promo" class="black-month-box reveal delay-2">
+                    <div class="bm-content-layer">
+                        <div class="bm-header">
+                            <h3>Black Month</h3>
+                            <p>La temporada más esperada de SHATIUM</p>
+                        </div>
+                        
+                        <p class="bm-intro">Disfruta de <strong>100 ml de una firma olfativa bien amplia</strong> para destacar en cada paso que des. ¡No dejes pasar estos precios exclusivos y eleva tu presencia!</p>
+                        
+                        <!-- Grid de Tarjetas Estáticas -->
+                        <div class="bm-cards-container">
+                            
+                            <!-- Tarjeta 1 -->
+                            <div class="bm-static-card">
+                                <div class="bm-card-header">
+                                    <strong>El Primer Perfume</strong>
+                                    <span>(100 ml)</span>
+                                </div>
+                                <button class="add-perfume-btn" id="bm-card-1-btn" onclick="openBMModal(1, 1)"><i class="fa-solid fa-plus"></i> Agregar Perfume (de 22)</button>
+                                <div class="bm-price-real" id="bm-card-1-price">Valor Final: <strong>$22.50</strong> <strike>$25.00</strike></div>
+                                <div class="bm-details" id="bm-card-1-details">
+                                    <p>Descuento aplicado de primer perfume con 10% de descuento, sin regalo refill.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Tarjeta 2 -->
+                            <div class="bm-static-card">
+                                <div class="bm-card-header">
+                                    <strong>Llevando 2 Perfumes</strong>
+                                    <span>(100 ml)</span>
+                                </div>
+                                <button class="add-perfume-btn" id="bm-card-2-btn" onclick="openBMModal(2, 2)"><i class="fa-solid fa-plus"></i> Agregar 2 Perfumes</button>
+                                <div class="bm-price-real" id="bm-card-2-price">Valor Final: <strong>$43.75</strong> <strike>$50.00</strike></div>
+                                <div class="bm-details" id="bm-card-2-details">
+                                    <p>1er perfume ($22.50 con 10% dcto) + 2do perfume ($21.25 con 15% dcto).</p>
+                                    <p class="bm-gift-text">🎁 Aplica regalo: 1 Refill de lujo.</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Tarjeta 3 -->
+                            <div class="bm-static-card">
+                                <div class="bm-card-header">
+                                    <strong>La Trilogía Perfecta</strong>
+                                    <span>(100 ml)</span>
+                                </div>
+                                <button class="add-perfume-btn" id="bm-card-3-btn" onclick="openBMModal(3, 3)"><i class="fa-solid fa-plus"></i> Elegir 3 Perfumes</button>
+                                <div class="bm-price-real" id="bm-card-3-price">Valor Final: <strong>$60.00</strong> <strike>$75.00</strike></div>
+                                <div class="bm-details" id="bm-card-3-details">
+                                    <p>Lleva 3 exquisitos perfumes de 100ml a un precio único.</p>
+                                    <p class="bm-gift-text">🎁 Incluye: 2 Regalos Refill.</p>
+                                </div>
+                                <div class="bm-shipping-badge">📦 INCLUYE ENVÍO</div>
+                            </div>
+
+                        </div>
+                        
+                        <div class="bm-screenshot-note">
+                            Envíanos la captura a nuestras redes del combo seleccionado para tener la promo "Black Month"
+                        </div>
+
+                        <div class="bm-footer">
+                            <p><i class="fa-solid fa-location-dot" style="color: #fff; font-size: 1.2rem; margin-right: 8px;"></i> Contamos con envíos a todo el Ecuador, y realizamos entregas personales directamente en los puntos especificados en nuestras historias de Instagram. ¡Contáctanos!</p>
+                        </div>
+                        <p class="bm-small-disclaimer">* Nota: Los combos no incluyen envío gratis en compras menores a $50.</p>
+                    </div>
+                </div>
+
+                <!-- FLECHA INICIO -->
+                <div class="back-to-top-container reveal delay-2">
+                    <a href="#inicio" class="back-to-top-btn"><i class="fa-solid fa-chevron-up"></i><span>Inicio</span></a>
+                </div>
+            </section>
+        </div>
+
+        <!-- =========================================
+             2. PESTAÑA ORIGINALS 
+             ========================================= -->
+        <div id="tab-originals" class="tab-pane">
+            <section class="concept reveal dark-section" style="background-color: #08080a; padding-top: 120px; min-height: 70vh;">
+                <h2>Shatium <em>Originals</em></h2>
+                <p>Shatium está en un auge de expansión empezando con la nueva tendencia de la perfumería que tiene buena presencia en el mercado, lo que es la <span>perfumería arábica</span>.</p>
+                
+                <div class="reveal delay-1" style="width: 100%;">
+                    <div class="highlight-box dark-bg" style="margin: 30px auto;">
+                        <p style="margin: 0; font-size: 1.15rem; color: var(--text-light); font-weight: 500; text-align: center;">
+                            Próximamente subiremos los perfumes en stock, espéralos en <span style="color: var(--accent-silver);">Shatium Originals</span>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FLECHA INICIO -->
+                <div class="back-to-top-container reveal delay-2" style="margin-top: auto;">
+                    <a href="#inicio" class="back-to-top-btn"><i class="fa-solid fa-chevron-up"></i><span>Inicio</span></a>
+                </div>
+            </section>
+        </div>
+
+        <!-- =========================================
+             3. PESTAÑA DECANTS
+             ========================================= -->
+        <div id="tab-decants" class="tab-pane">
+            <section class="concept reveal light-bg">
+                <h2>¿Qué es un Decant?</h2>
+                <p>Un decant es una porción extraída directamente del frasco original y envasada en un atomizador de lujo de menor tamaño. En SHATIUM te entregamos <span>calidad por calidad</span>. Cero alteraciones, cero diluciones. Es exactamente la misma magia y duración del frasco principal, optimizada para ti.</p>
+                
+                <div class="reveal delay-1">
+                    <div class="highlight-box" style="background-color: #ffffff; border: 1px solid #e5e5ea; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                        <h3 style="color: var(--text-dark); font-family: 'Montserrat', sans-serif; font-size: 1.4rem; margin-bottom: 15px; font-weight: 700;">Entendemos que elegir puede ser complejo...</h3>
+                        <p style="margin: 0; font-size: 1.1rem; color: var(--text-muted-light);">En SHATIUM sabemos que ingresar a este mundo sin saber qué perfume es apto para ti resulta abrumador. Pero la solución es simple: <span>nosotros te guiamos en todo el proceso.</span> Te acompañamos paso a paso en la búsqueda de tu firma olfativa, descifrando tus gustos, hasta que logres casarte definitivamente con tu aroma preferido.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="concept reveal dark-bg dark-section" style="background-color: var(--bg-dark); padding-top: 100px;">
+                <h2>El Boom del Lujo Árabe</h2>
+                <p>Actualmente, nuestro catálogo de decants arranca con la joya de la corona: <span>La Perfumería Árabe</span>. Estas fragancias están dominando la industria a nivel mundial por una sencilla razón: entregan una proyección bestial, duración extrema en piel y una calidad de ingredientes que humilla a muchas marcas tradicionales.</p>
+                <p style="margin-top: 15px;">A continuación te presentamos dos de los <span>mejores ejemplos de perfumes árabes en la actualidad</span>, detallando cómo se estructuran sus aromas originales y qué experimentarás en piel al llevarlos en nuestros decants.</p>
+
+                <!-- TARJETAS FLIP -->
+                <div class="showcase-container">
+                    <div class="flip-card reveal delay-1">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">9 PM Night Out - Afnan</div>
+                                <div class="card-front-content">
+                                    <div class="card-img-container"><img src="shatdecant1.jpg" alt="Afnan 9 PM" onerror="this.src='https://via.placeholder.com/200x300/1c1c1e/86868b?text=FOTO+9+PM'"></div>
+                                    <div class="card-accords">
+                                        <div class="accords-title">Acordes Principales</div>
+                                        <div class="accord-bar" style="width: 100%; background-color: #794A1F;">Amaderado</div>
+                                        <div class="accord-bar" style="width: 95%; background-color: #FF5A36;">Afrutados</div>
+                                        <div class="accord-bar" style="width: 90%; background-color: #D94821;">Cálido Especiado</div>
+                                        <div class="accord-bar" style="width: 85%; background-color: #F23D5E;">Dulce</div>
+                                        <div class="accord-bar" style="width: 80%; background-color: #FFC13B; color: #000; text-shadow: none;">Tropical</div>
+                                        <div class="accord-bar" style="width: 75%; background-color: #5AB39D;">Aromático</div>
+                                        <div class="accord-bar" style="width: 70%; background-color: #B798C9;">Lavanda</div>
+                                        <div class="accord-bar" style="width: 65%; background-color: #FA9CB5; color: #000; text-shadow: none;">Florales</div>
+                                        <div class="accord-bar" style="width: 60%; background-color: #FBF1C7; color: #000; text-shadow: none;">Avainillado</div>
+                                        <div class="accord-bar" style="width: 55%; background-color: #A2D176; color: #000; text-shadow: none;">Fresco Especiado</div>
+                                    </div>
+                                </div>
+                                <div class="flip-hint">(Toca la tarjeta para ver la Pirámide Olfativa ↻)</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="card-title">Pirámide del Perfume</div>
+                                <div class="pyramid-level"><h5>Notas de Salida</h5><strong>Pitahaya, Coñac, Lavanda, Manzana</strong><p>Apertura vibrante donde la frescura de la manzana se funde con el exótico coñac.</p></div>
+                                <div class="pyramid-level"><h5>Corazón</h5><strong>Tófe, Gamuza, Cardamomo, Cedro</strong><p>Centro seductor dominado por el dulce tófe, abrazado por fina gamuza.</p></div>
+                                <div class="pyramid-level" style="margin-bottom: 0;"><h5>Base</h5><strong>Haba Tonka, Akigalawood, Pachulí</strong><p>Fijación extrema de estela magnética, profundamente nocturna y envolvente.</p></div>
+                                <div class="flip-hint">(Toca para volver a la imagen ↻)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card reveal delay-2">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card-title">Khamrah Dukhan - Lattafa</div>
+                                <div class="card-front-content">
+                                    <div class="card-img-container"><img src="shatdecant2.jpg" alt="Lattafa Khamrah Dukhan" onerror="this.src='https://via.placeholder.com/200x300/1c1c1e/86868b?text=FOTO+KHAMRAH'"></div>
+                                    <div class="card-accords">
+                                        <div class="accords-title">Acordes Principales</div>
+                                        <div class="accord-bar" style="width: 100%; background-color: #C15F21;">Ámbar</div>
+                                        <div class="accord-bar" style="width: 90%; background-color: #D94821;">Cálido Especiado</div>
+                                        <div class="accord-bar" style="width: 80%; background-color: #F23D5E;">Dulce</div>
+                                        <div class="accord-bar" style="width: 70%; background-color: #C2A278;">Tabaco</div>
+                                        <div class="accord-bar" style="width: 60%; background-color: #D1BFAe; color: #000; text-shadow: none;">Balsámico</div>
+                                        <div class="accord-bar" style="width: 50%; background-color: #FBF1C7; color: #000; text-shadow: none;">Avainillado</div>
+                                        <div class="accord-bar" style="width: 45%; background-color: #B3A4B8;">Ahumado</div>
+                                    </div>
+                                </div>
+                                <div class="flip-hint">(Toca la tarjeta para ver la Pirámide Olfativa ↻)</div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="card-title">Pirámide del Perfume</div>
+                                <div class="pyramid-level"><h5>Notas de Salida</h5><strong>Pimienta Negra, Tabaco, Piña</strong><p>Impacto audaz donde el tabaco oscuro resalta con el toque jugoso de la piña.</p></div>
+                                <div class="pyramid-level"><h5>Corazón</h5><strong>Pachulí, Café, Iris</strong><p>Un centro misterioso; el café aporta energía y el iris una textura atalcada.</p></div>
+                                <div class="pyramid-level" style="margin-bottom: 0;"><h5>Base</h5><strong>Vainilla, Ámbar, Madera Seca, Benjuí</strong><p>Fondo resinoso que envuelve la piel como oro líquido durante largas horas.</p></div>
+                                <div class="flip-hint">(Toca para volver a la imagen ↻)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RECUADRO: PREGUNTA POR NUESTRO CATÁLOGO -->
+                <div class="reveal delay-3" style="width: 100%;">
+                    <div class="highlight-box dark-bg" style="margin: 50px auto 0 auto; text-align: center; border-color: rgba(226, 226, 231, 0.3);">
+                        <h3 style="color: var(--text-light); font-size: 1.4rem; font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 15px;">Pregunta por nuestro catálogo actualizado</h3>
+                        <p style="margin: 0; font-size: 1.05rem; color: var(--text-light); text-align: center;">
+                            El inventario se mueve rápido. Contáctanos para conocer las opciones árabes disponibles hoy. <span>No te quedes sin probar lo que está marcando tendencia en el mundo.</span>
+                        </p>
+                        <p style="margin-top: 18px; font-size: 0.85rem; color: #a1a1a6; font-style: italic; line-height: 1.5; text-align: center;">
+                            * Próximamente ampliaremos nuestro catálogo con exquisitos perfumes de diseñador y perfumería de autor. ¡No olvides preguntar siempre por nuestro stock disponible y seguirnos en nuestras redes sociales para enterarte de las novedades antes que nadie!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAMAÑOS DE DECANTS -->
+            <section class="reveal dark-bg dark-section" style="background-color: var(--bg-dark); padding-top: 40px; padding-bottom: 60px;">
+                <h2>Nuestros Formatos</h2>
+                <p>Hablando con la verdad y números reales: un atomizador de decant estándar de alta calidad libera en promedio 13 sprays por mililitro. Aquí tienes las matemáticas exactas de lo que te llevas.</p>
+
+                <div class="sizes-container">
+                    <div class="gallery-wrapper reveal delay-1">
+                        <div class="size-card">
+                            <img src="shat3ml.jpg" alt="Decant 3ML" class="real-image" onerror="this.src='https://via.placeholder.com/150x250/1c1c1e/86868b?text=FOTO+3ML'">
+                            <h4 class="size-title">3 ML</h4>
+                            <p class="size-desc">Ideal para un primer encuentro olfativo o para llevar en el bolsillo en una salida nocturna rápida.</p>
+                            <div class="sprays-badge">~ 55 Atomizaciones Reales</div>
+                        </div>
+                    </div>
+                    <div class="gallery-wrapper reveal delay-2">
+                        <div class="size-card">
+                            <img src="shat5ml.jpg" alt="Decant 5ML" class="real-image" onerror="this.src='https://via.placeholder.com/150x250/1c1c1e/86868b?text=FOTO+5ML'">
+                            <h4 class="size-title">5 ML</h4>
+                            <p class="size-desc">Perfecto para probar ese perfume del que todos hablan o para acompañarte en un viaje corto.</p>
+                            <div class="sprays-badge">~ 100 Atomizaciones Reales</div>
+                        </div>
+                    </div>
+                    <div class="gallery-wrapper reveal delay-3">
+                        <div class="size-card">
+                            <img src="shat10ml.jpg" alt="Decant 10ML" class="real-image" onerror="this.src='https://via.placeholder.com/150x250/1c1c1e/86868b?text=FOTO+10ML'">
+                            <h4 class="size-title">10 ML</h4>
+                            <p class="size-desc">El tamaño estándar ideal. Cantidad perfecta para alternar y hacer que sea tu firma durante semanas.</p>
+                            <div class="sprays-badge">~ 190 Atomizaciones Reales</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FLECHA INICIO EN EL ÚLTIMO APARTADO -->
+                <div class="back-to-top-container reveal delay-3" style="margin-top: 50px;">
+                    <a href="#inicio" class="back-to-top-btn"><i class="fa-solid fa-chevron-up"></i><span>Inicio</span></a>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <span>© 2026 SHATIUM. Todos los derechos reservados.</span>
+            <span class="divider">|</span>
+            <span>Envíos a nivel nacional 🇪🇨</span>
+        </div>
+        <span class="footer-badge">SHATIUM UIO</span>
+    </footer>
+
+    <!-- WIDGET DE RESEÑAS CON CORAZÓN SVG -->
+    <div class="reviews-widget">
+        <div class="reviews-tooltip">Opinión de nuestro servicio</div>
+        <button class="reviews-btn" id="openReviewsBtn" aria-label="Abrir reseñas" style="background: #141416; border: 1px solid rgba(226, 226, 231, 0.2); box-shadow: 0 10px 30px rgba(255,255,255,0.15);">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="#ffffff" style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.7)); margin-top: 2px;">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- MODAL DE RESEÑAS -->
+    <div class="reviews-modal" id="reviewsModal">
+        <div class="reviews-modal-content">
+            <div class="modal-header">
+                <h2>Reseñas de Usuarios</h2>
+                <button class="close-modal" id="closeReviewsBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="reviews-list" id="dynamicReviewsList"></div>
+            <div class="modal-footer">
+                <p>¿Tienes alguna sugerencia de perfume que nos haga falta integrar a nuestro catálogo? ¡Coméntanos cuál es!</p>
+                <a href="#" target="_blank" class="suggest-btn">Dejar sugerencia</a>
+                <span class="small-note">Redirección a nuestro buzón de sugerencias</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL SELECTOR DE PERFUMES -->
+    <div class="perfume-modal" id="perfumeModal">
+        <div class="perfume-modal-content">
+            <div class="perfume-modal-header">
+                <div>
+                    <h2>Selecciona tu Fragancia</h2>
+                    <p>Catálogo completo SHATIUM (22 opciones disponibles)</p>
+                </div>
+                <button class="close-modal" id="closePerfumeBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="perfume-grid" id="perfumeGridContainer">
+                <!-- Inyectado por JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            // 1. SISTEMA DE PESTAÑAS PRINCIPAL (TABS) Y SCROLL AUTOMÁTICO
+            const menuBtns = document.querySelectorAll('.menu-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            menuBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target');
+
+                    menuBtns.forEach(b => {
+                        b.classList.remove('active', 'normal');
+                        b.classList.add('normal');
+                        b.innerHTML = b.textContent;
+                    });
+                    
+                    this.classList.remove('normal');
+                    this.classList.add('active');
+                    this.innerHTML = `<span>${this.textContent}</span>`;
+
+                    tabPanes.forEach(pane => { pane.classList.remove('active'); });
+
+                    const targetPane = document.getElementById(targetId);
+                    if (targetPane) {
+                        targetPane.classList.add('active');
+                        window.dispatchEvent(new Event('scroll'));
+                        
+                        setTimeout(() => {
+                            const yOffset = -20;
+                            const y = targetPane.getBoundingClientRect().top + window.scrollY + yOffset;
+                            window.scrollTo({top: y, behavior: 'smooth'});
+                        }, 100);
+                    }
+                });
+            });
+
+            // Enlaces hacia los combos dentro de Essentials
+            const gotoCombosBtns = document.querySelectorAll('.goto-combos');
+            gotoCombosBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.querySelector('[data-target="tab-essentials"]').click();
+                    setTimeout(() => {
+                        const combosSection = document.getElementById('combos-exclusivos');
+                        if(combosSection) combosSection.scrollIntoView({behavior: "smooth"});
+                    }, 300);
+                });
+            });
+
+            // 2. SISTEMA INTERACTIVO DE PESTAÑAS PARA LOS COMBOS SHATIUM
+            const comboTabs = document.querySelectorAll('.combo-tab');
+            const comboBoxes = document.querySelectorAll('.combo-box');
+            
+            comboTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    comboTabs.forEach(t => t.classList.remove('active'));
+                    comboBoxes.forEach(b => b.classList.remove('active-combo'));
+                    
+                    tab.classList.add('active');
+                    const targetBox = document.getElementById(tab.getAttribute('data-target'));
+                    targetBox.classList.add('active-combo');
+                });
+            });
+
+            // 3. ANIMACIONES REVEAL
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOnScroll = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } });
+            }, { threshold: 0.05, rootMargin: "0px 0px -40px 0px" });
+            reveals.forEach(reveal => { revealOnScroll.observe(reveal); });
+            
+            setTimeout(() => { 
+                const hero = document.querySelector('.hero'); if(hero) hero.classList.add('active'); 
+                window.dispatchEvent(new Event('scroll')); 
+            }, 100);
+
+            // 4. TARJETAS FLIP (Decants)
+            const flipCards = document.querySelectorAll('.flip-card');
+            flipCards.forEach(card => { card.addEventListener('click', function() { this.classList.toggle('is-flipped'); }); });
+
+            // 5. SISTEMA DE RESEÑAS
+            const reviewsData = [
+                { name: "José Zambrano", img: "perfil1.jpg", stars: 5, text: "Wao, quedé sorprendido con el producto, la verdad no me esperaba esa fijación en piel 🔥. Recomendadísimo." },
+                { name: "Luis Sánchez", img: "perfil2.jpg", stars: 5, text: "Pedí de envío, me llegó lo más pronto. Lo único que tardó fue el transporte 😅, pero me llegó y estoy por pedir más!!" },
+                { name: "Carlos Rodríguez", img: "perfil3.jpg", stars: 4, text: "El empaque es top, súper elegante. El aroma de Erba Pura está a otro nivel, 100% recomendado loco. 💯" },
+                { name: "Juan García", img: "perfil4.jpg", stars: 5, text: "Pedí el Baccarat con el +20% de esencia y bro... la duración es una locura. Me bañé y sigo oliendo a eso jaja 🤯." },
+                { name: "Jorge Vera", img: "perfil5.jpg", stars: 4, text: "Buenísimos los perfumes. El Phantom me dura fácil unas 8 horas proyectando bien. Solo pongan más promos de envíos! 🚚" },
+                { name: "Ángel López", img: "perfil6.jpg", stars: 5, text: "Firmeza total con el Ombre Leather, huele a cuero puro y a jefe jajaja 😎. Me llegaron de Guayaquil a la sierra sin problema." },
+                { name: "Diego Cedeño", img: "perfil7.jpg", stars: 4, text: "Todo chevere, la verdad es que el refill que regalan es un puntazo para llevar a la U o salir de farra. 🍻" },
+                { name: "María Intriago", img: "perfil18.jpg", stars: 5, text: "Literal, fue el mejor regalo para mi novio ✨. Le encantó el Invictus, huele riquísimo y dura un montón." },
+                { name: "Rosa Loor", img: "perfil19.jpg", stars: 5, text: "Hice combo de crema y perfume de Cloud y no les miento, huelo a postre todo el día 🍰💖 ¡Amo!" },
+                { name: "Ana Guerrero", img: "perfil20.jpg", stars: 4, text: "El servicio de atención es muy bueno, te ayudan a elegir si no sabes nada de notas olfativas 🥰 súper pacientes." },
+                { name: "Carmen Chávez", img: "perfil21.jpg", stars: 5, text: "Compré un combo para mi esposo y para mí, y la verdad es que la calidad se nota. Nada de olor a alcohol barato, son muy buenos. ✨" },
+                { name: "Diana Toala", img: "perfil22.jpg", stars: 5, text: "La presentación es bellísima, las botellas pesadas y el atomizador esparce súper bien. No le piden nada a los originales 💖." }
+            ];
+
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            const reviewsListContainer = document.getElementById('dynamicReviewsList');
+            function renderRandomReviews() {
+                const shuffled = shuffleArray([...reviewsData]);
+                const count = Math.floor(Math.random() * (6 - 4 + 1)) + 4;
+                const selectedReviews = shuffled.slice(0, count);
+                
+                let reviewsHTML = '';
+                selectedReviews.forEach(review => {
+                    const starsHtml = '★'.repeat(review.stars) + '☆'.repeat(5 - review.stars);
+                    reviewsHTML += `
+                        <div class="review-card">
+                            <div class="reviewer-avatar">
+                                <img src="${review.img}" alt="Foto" onerror="this.src='https://via.placeholder.com/45x45/2a2a2c/e2e2e7?text=${review.name.charAt(0)}'">
+                            </div>
+                            <div class="review-content">
+                                <div class="reviewer-name">${review.name} <span class="stars">${starsHtml}</span></div>
+                                <div class="review-text">${review.text}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                reviewsListContainer.innerHTML = reviewsHTML;
+            }
+
+            const openBtn = document.getElementById('openReviewsBtn');
+            const closeBtn = document.getElementById('closeReviewsBtn');
+            const modal = document.getElementById('reviewsModal');
+
+            openBtn.addEventListener('click', () => { renderRandomReviews(); modal.classList.add('active'); document.body.style.overflow = 'hidden'; });
+            closeBtn.addEventListener('click', () => { modal.classList.remove('active'); document.body.style.overflow = ''; });
+            modal.addEventListener('click', (e) => { if(e.target === modal) { modal.classList.remove('active'); document.body.style.overflow = ''; } });
+
+            // 6. TENDENCIAS Y CULTURA OLFATIVA
+            const dbTendencias = {
+                costa: {
+                    desc: "En el cálido y húmedo clima del litoral, la evaporación es altísima. La perfumería debe proyectar limpieza y frescor, cortando la pesadez del trópico sin generar fatiga olfativa. Cítricos, acuáticos y frutales jugosos dominan la escena.",
+                    mujer: {
+                        top: [
+                            {img: "shat9.jpg", name: "Live", brand: "JLo", txt: "Frutas tropicales vibrantes. Ideal para brillar bajo el sol de la costa, aportando una frescura dulce y jugosa inconfundible."},
+                            {img: "shat7.jpg", name: "Meow", brand: "Katy Perry", txt: "Dulzor aireado y juguetón. Su vainilla suave y pera no empalagan, creando un aura coqueta perfecta para el calor."}
+                        ],
+                        rec: [
+                            {img: "shat10.jpg", name: "LVEB Rose Extraordinaire", brand: "Lancôme", txt: "<strong>Detalle Técnico:</strong> Rosa fresca y cristalina. <strong>Por qué lo recomendamos:</strong> En la humedad, los perfumes pesados asfixian. Esta versión ofrece un secado floral elegante que soporta el calor sin perder sofisticación."},
+                            {img: "shat14.jpg", name: "Erba Pura", brand: "Xerjoff", niche: true, txt: "<strong>Detalle Técnico:</strong> Cesta de frutas sobre almizcle puro. <strong>Por qué lo recomendamos:</strong> La calidad de su almizcle actúa como fijador nuclear, proyectando una estela frutal bestial durante todo el día."}
+                        ]
+                    },
+                    hombre: {
+                        top: [
+                            {img: "shat2.jpg", name: "Allure Homme Sport", brand: "Chanel", txt: "Cítricos aldehídicos sobre una base cremosa. Proyecta una vitalidad arrolladora para el dinamismo diurno en el puerto."},
+                            {img: "shat4.jpg", name: "Acqua di Giò Profumo", brand: "Giorgio Armani", txt: "El rey del mar. Su frescor acuático mezclado con incienso ofrece misterio y pulcritud para las cálidas noches costeras."}
+                        ],
+                        rec: [
+                            {img: "shat1.jpg", name: "Toy Boy", brand: "Moschino", txt: "<strong>Detalle Técnico:</strong> Rosa negra, pimienta y elemi. <strong>Por qué lo recomendamos:</strong> Un frescor atrevido y especiado. Corta la pesadez del trópico sin generar fatiga olfativa."},
+                            {img: "shat5.jpg", name: "Bleu de Chanel", brand: "Chanel", txt: "<strong>Detalle Técnico:</strong> Pomelo, jengibre y maderas nobles. <strong>Por qué lo recomendamos:</strong> Le da la formalidad exacta para reuniones o eventos ejecutivos en zonas calurosas, sin asfixiar."}
+                        ]
+                    }
+                },
+                sierra: {
+                    desc: "El clima andino de aire seco, altitud y viento helado nocturno es el lienzo perfecto para la perfumería oscura y opulenta. Las resinas, el cuero y las notas gourmand (café, cacao) demuestran su verdadero poder, abrazando la piel durante largas horas sin empalagar.",
+                    mujer: {
+                        top: [
+                            {img: "shat11.jpg", name: "Black Opium", brand: "YSL", txt: "Dosis de café oscuro y vainilla. El frío andino exalta su calidez, envolviendo a la mujer en un aura profundamente sensual."},
+                            {img: "shat12.jpg", name: "Yes I Am", brand: "Cacharel", txt: "Especiado, dulce y lactónico. Las bajas temperaturas permiten que sus notas de frambuesa y leche especiada brillen con suma elegancia."}
+                        ],
+                        rec: [
+                            {img: "shat21.jpg", name: "Delina Exclusif", brand: "Parfums de Marly", niche: true, txt: "<strong>Detalle Técnico:</strong> Rosa turca densa, incienso y vainilla. <strong>Por qué lo recomendamos:</strong> El clima seco andino domesa esta bestia olfativa, irradiando un lujo empolvado que exige respeto absoluto."},
+                            {img: "shat18.jpg", name: "Baccarat Rouge 540", brand: "Maison F. Kurkdjian", niche: true, txt: "<strong>Detalle Técnico:</strong> Azafrán, jazmín y ámbar gris. <strong>Por qué lo recomendamos:</strong> El viento helado actúa como conductor para esta molécula de azúcar quemada. Dejarás una estela imborrable por tu ciudad."}
+                        ]
+                    },
+                    hombre: {
+                        top: [
+                            {img: "shat6.jpg", name: "Stronger With You", brand: "Emporio Armani", txt: "Castaña glaseada y vainilla. Es el abrigo definitivo para el frío de la sierra. Extremadamente cálido y diseñado para recibir cumplidos."},
+                            {img: "shat17.jpg", name: "Ombré Leather", brand: "Tom Ford", niche: true, txt: "Cuero negro hiperrealista. Proyecta un lujo terroso e imponente, ideal para las elegantes y frías noches capitalinas."}
+                        ],
+                        rec: [
+                            {img: "shat19.jpg", name: "Tobacco Vanille", brand: "Tom Ford", niche: true, txt: "<strong>Detalle Técnico:</strong> Hoja de tabaco rubio, vainilla y cacao. <strong>Por qué lo recomendamos:</strong> La personificación de la opulencia. A bajas temperaturas, el tabaco se vuelve cremoso y extremadamente lujoso."},
+                            {img: "shat22.jpg", name: "Angels' Share", brand: "Kilian", niche: true, txt: "<strong>Detalle Técnico:</strong> Coñac, roble, canela y praliné. <strong>Por qué lo recomendamos:</strong> Huele a un licor fino envejecido. La química del frío evita que empalague, convirtiéndolo en un néctar magnético."}
+                        ]
+                    }
+                },
+                amazonia: {
+                    desc: "La selva ecuatoriana es un ecosistema de alta pluviosidad, humedad del 90% y temperaturas cálidas. Un perfume suave es devorado por el ambiente. Se requiere perfumería 'Beast Mode': almizcles pesados, moléculas sintéticas y acordes especiados/frutales que funcionen como armadura.",
+                    mujer: {
+                        top: [
+                            {img: "shat14.jpg", name: "Erba Pura", brand: "Xerjoff", txt: "Frutas exuberantes blindadas en almizcle. Logra una longevidad extrema que resiste la lluvia, el sudor y el clima extremo selvático."},
+                            {img: "shat13.jpg", name: "Olympéa Absolu", brand: "Paco Rabanne", txt: "Su corazón floral y avainillado denso destaca y sobrevive majestuosamente a la pesada humedad de la jungla."}
+                        ],
+                        rec: [
+                            {img: "shat21.jpg", name: "Delina Exclusif", brand: "Parfums de Marly", niche: true, txt: "<strong>Detalle Técnico:</strong> Concentración extracto con rosa y oud suave. <strong>Por qué lo recomendamos:</strong> No se rinde ante la lluvia; proyecta una feminidad densa y poderosa que se abre paso en el verde selvático."},
+                            {img: "shat11.jpg", name: "Black Opium", brand: "YSL", txt: "<strong>Detalle Técnico:</strong> Café negro y jazmín en alta dosis. <strong>Por qué lo recomendamos:</strong> Estas notas irradian fuertemente con el calor corporal nocturno, volviéndose una fragancia narcótica y seductora en la humedad."}
+                        ]
+                    },
+                    hombre: {
+                        top: [
+                            {img: "shat3.jpg", name: "Sauvage", brand: "Dior", txt: "El monstruo de los cumplidos. Su concentración masiva de ambroxan garantiza que proyecte fuertemente sin importar la fuerte lluvia."},
+                            {img: "shat4.jpg", name: "Acqua di Giò Profumo", brand: "Gior Armani", txt: "Notas marinas y pachulí terroso. Funciona como un respiro de oxígeno, integrándose perfectamente a la naturaleza verde y húmeda."}
+                        ],
+                        rec: [
+                            {img: "shat20.jpg", name: "Absolu Aventus", brand: "Creed", niche: true, txt: "<strong>Detalle Técnico:</strong> Piña, toronja y abedul. <strong>Por qué lo recomendamos:</strong> La fruta fresca mitiga el calor y su fondo ahumado se aferra a la piel sudada, manteniendo un aura pulcra y de alto valor."},
+                            {img: "shat16.jpg", name: "Arabians Tonka", brand: "Montale", niche: true, txt: "<strong>Detalle Técnico:</strong> Rosa, haba tonka y oud. <strong>Por qué lo recomendamos:</strong> Una bomba nuclear de dulzor. Su densidad es tan alta que atraviesa el 90% de humedad amazónica marcando tu territorio."}
+                        ]
+                    }
+                },
+                galapagos: {
+                    desc: "La Región Insular exige respeto a su entorno purista. El sol ecuatorial y la brisa marina cargada de salitre piden fragancias luminosas, transparentes y ozónicas. Aquí triunfan las notas de sal, cítricos efervescentes y maderas rubias que se fusionan con las islas encantadas.",
+                    mujer: {
+                        top: [
+                            {img: "shat9.jpg", name: "Live", brand: "JLo", txt: "Piña y cítricos luminosos. Es el aroma de unas vacaciones perfectas, fusionándose maravillosamente con el mar, la brisa y la arena."},
+                            {img: "shat7.jpg", name: "Meow", brand: "Katy Perry", txt: "Vainilla suave y juguetona. Su ligereza aporta un toque tierno y fresco que no compite con el ecosistema natural de la isla."}
+                        ],
+                        rec: [
+                            {img: "shat10.jpg", name: "LVEB Rose Extraordinaire", brand: "Lancôme", txt: "<strong>Detalle Técnico:</strong> Rosa fresca cristalina. <strong>Por qué lo recomendamos:</strong> En los paseos por yate, la rosa refresca y aporta una sofisticación pura y radiante bajo el fuerte sol insular."},
+                            {img: "shat14.jpg", name: "Erba Pura", brand: "Xerjoff", niche: true, txt: "<strong>Detalle Técnico:</strong> Limón, naranja y vainilla. <strong>Por qué lo recomendamos:</strong> El sol descompone los perfumes rápido, pero esta joya fija las frutas con almizcle. Olerás a excentricidad frutal todo tu viaje."}
+                        ]
+                    },
+                    hombre: {
+                        top: [
+                            {img: "shat2.jpg", name: "Allure Homme Sport", brand: "Chanel", txt: "Energía cítrica y acuática. Ideal para las expediciones de buceo y caminatas, aportando un frescor dinámico y efervescente."},
+                            {img: "shat4.jpg", name: "Acqua di Giò Profumo", brand: "Giorgio Armani", txt: "Notas marinas oscuras. Es el aroma que huele a océano puro. Se siente como una extensión natural del ambiente de las islas encantadas."}
+                        ],
+                        rec: [
+                            {img: "shat5.jpg", name: "Bleu de Chanel", brand: "Chanel", txt: "<strong>Detalle Técnico:</strong> Pomelo, menta y maderas. <strong>Por qué lo recomendamos:</strong> Para una cena elegante en tu yate privado, aporta una madurez y sobriedad que eleva de inmediato tu estatus en la isla."},
+                            {img: "shat1.jpg", name: "Toy Boy", brand: "Moschino", txt: "<strong>Detalle Técnico:</strong> Rosa, pimienta rosa y clavo. <strong>Por qué lo recomendamos:</strong> Frescura exótica. No huele a mar, sino a un botánico húmedo. Atrevido, ideal para destacar creativamente en tus vacaciones."}
+                        ]
+                    }
+                }
+            };
+
+            const rBtns = document.querySelectorAll('.r-btn');
+            const gBtns = document.querySelectorAll('.g-btn');
+            const container = document.getElementById('results-container');
+            
+            let currentRegion = 'costa';
+            let currentGender = 'mujer';
+
+            function renderResults() {
+                const data = dbTendencias[currentRegion];
+                if(!data) return;
+                
+                const gData = data[currentGender];
+                if(!gData) return;
+
+                let html = `
+                    <div class="results-header">
+                        <h3>Análisis Olfativo SHATIUM</h3>
+                        <p>${data.desc}</p>
+                    </div>
+                    
+                    <div class="perfume-category-title">
+                        <i class="fa-solid fa-fire" style="color: #ff2d55;"></i> Top Vendidos (Tendencias)
+                    </div>
+                    <div class="region-grid">
+                `;
+                
+                gData.top.forEach(p => {
+                    html += `
+                        <div class="r-card">
+                            <img src="${p.img}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/200x250/1c1c1e/86868b?text=FOTO'">
+                            <h4>${p.name}</h4>
+                            <span class="brand">${p.brand}</span>
+                            <p>${p.txt}</p>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                    </div>
+                    
+                    <div class="perfume-category-title rec-title">
+                        <i class="fa-solid fa-crown"></i> Recomendaciones de Lujo SHATIUM
+                    </div>
+                    <div class="region-grid">
+                `;
+                
+                gData.rec.forEach(p => {
+                    const badge = p.niche ? `<div class="niche-badge">Perfumería Nicho</div>` : '';
+                    html += `
+                        <div class="r-card rec-card">
+                            ${badge}
+                            <img src="${p.img}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/200x250/1c1c1e/86868b?text=FOTO'">
+                            <h4>${p.name}</h4>
+                            <span class="brand">${p.brand}</span>
+                            <p>${p.txt}</p>
+                        </div>
+                    `;
+                });
+                
+                html += `</div>`;
+                
+                container.innerHTML = html;
+            }
+
+            rBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    rBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentRegion = this.getAttribute('data-val');
+                    
+                    container.classList.remove('reveal', 'delay-2', 'active');
+                    void container.offsetWidth; 
+                    container.classList.add('reveal');
+                    renderResults();
+                    setTimeout(()=>container.classList.add('active'), 50);
+                });
+            });
+
+            gBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    gBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentGender = this.getAttribute('data-val');
+                    
+                    container.classList.remove('reveal', 'delay-2', 'active');
+                    void container.offsetWidth; 
+                    container.classList.add('reveal');
+                    renderResults();
+                    setTimeout(()=>container.classList.add('active'), 50);
+                });
+            });
+
+            if(container) {
+                renderResults();
+                setTimeout(()=>container.classList.add('active'), 400); 
+            }
+
+            // 7. SISTEMA DE SELECCIÓN DE PERFUMES (MODAL) Y LÓGICA DE PRECIOS
+            const perfumesCat = [
+                { id: 1, name: "Toy Boy", brand: "Moschino", img: "shat1.jpg" },
+                { id: 2, name: "Allure Homme Sport", brand: "Chanel", img: "shat2.jpg" },
+                { id: 3, name: "Sauvage", brand: "Dior", img: "shat3.jpg" },
+                { id: 4, name: "Acqua di Giò", brand: "Armani", img: "shat4.jpg" },
+                { id: 5, name: "Bleu", brand: "Chanel", img: "shat5.jpg" },
+                { id: 6, name: "Stronger With You", brand: "Armani", img: "shat6.jpg" },
+                { id: 7, name: "Cloud", brand: "Ariana Grande", img: "shat7.jpg" },
+                { id: 8, name: "Olympéa", brand: "Paco Rabanne", img: "shat8.jpg" },
+                { id: 9, name: "Meow", brand: "Katy Perry", img: "shat9.jpg" },
+                { id: 10, name: "Live", brand: "JLo", img: "shat10.jpg" },
+                { id: 11, name: "Black Opium", brand: "YSL", img: "shat11.jpg" },
+                { id: 12, name: "Yes I Am", brand: "Cacharel", img: "shat12.jpg" },
+                { id: 13, name: "Queen", brand: "Armaf", img: "shat13.jpg" },
+                { id: 14, name: "Erba Pura", brand: "Xerjoff", img: "shat14.jpg" },
+                { id: 15, name: "Smoking Hot", brand: "Kilian", img: "shat15.jpg" },
+                { id: 16, name: "Arabians Tonka", brand: "Montale", img: "shat16.jpg" },
+                { id: 17, name: "Ombré Leather", brand: "Tom Ford", img: "shat17.jpg" },
+                { id: 18, name: "Baccarat Rouge", brand: "M.F.K.", img: "shat18.jpg" },
+                { id: 19, name: "Tobacco Vanille", brand: "Tom Ford", img: "shat19.jpg" },
+                { id: 20, name: "Absolu Aventus", brand: "Creed", img: "shat20.jpg" },
+                { id: 21, name: "Delina", brand: "Parfums de Marly", img: "shat21.jpg" },
+                { id: 22, name: "Angels' Share", brand: "Kilian", img: "shat22.jpg" }
+            ];
+
+            const perfumeModal = document.getElementById('perfumeModal');
+            const closePerfumeBtn = document.getElementById('closePerfumeBtn');
+            const perfumeGrid = document.getElementById('perfumeGridContainer');
+
+            let pGridHTML = '';
+            perfumesCat.forEach(p => {
+                const type = p.id >= 14 ? 'Essential+' : 'Essential';
+                const badge = p.id >= 14 ? `<span style="background:var(--silver-gradient); color:#000; padding:2px 6px; border-radius:4px; font-size:0.6rem; font-weight:bold; margin-top:5px;">Nicho</span>` : '';
+                pGridHTML += `
+                    <div class="p-item" onclick="window.selectPerfume(${p.id}, '${p.name.replace(/'/g, "\\'")}', '${type}')">
+                        <img src="${p.img}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/100x120/1c1c1e/86868b?text=SHAT+${p.id}'">
+                        <h4>${p.name}</h4>
+                        <span>${p.brand}</span>
+                        ${badge}
+                    </div>
+                `;
+            });
+            if(perfumeGrid) perfumeGrid.innerHTML = pGridHTML;
+
+            if(closePerfumeBtn) {
+                closePerfumeBtn.addEventListener('click', () => {
+                    perfumeModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+            if(perfumeModal) {
+                perfumeModal.addEventListener('click', (e) => {
+                    if(e.target === perfumeModal) {
+                        perfumeModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
